@@ -9,6 +9,6 @@ void bowling_game_roll(int pins){
 }
 
 int bowling_game_score(){
-    return -1;
+    return 0;
 }
 
