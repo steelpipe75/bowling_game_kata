@@ -8,6 +8,15 @@ static void roll_many(int n, int pins){
     }
 }
 
+static void test_one_strike(){
+    bowling_game_init();
+    bowling_game_roll(10);
+    bowling_game_roll(3);
+    bowling_game_roll(4);
+    roll_many(16, 0);
+    assert( bowling_game_score() == 24 && "test_one_strike()" );
+}
+
 static void test_one_spare(){
     bowling_game_init();
     bowling_game_roll(5);
@@ -35,6 +44,7 @@ int main(){
     test_gutter_game();
     test_all_ones();
     test_one_spare();
+    test_one_strike();
 
     return 0;
 }
