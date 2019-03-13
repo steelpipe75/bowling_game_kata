@@ -8,6 +8,12 @@ static void roll_many(int n, int pins){
     }
 }
 
+static void test_perfect_game(){
+    bowling_game_init();
+    roll_many(12, 10);
+    assert( bowling_game_score() == 300 && "test_perfect_game()" );
+}
+
 static void test_one_strike(){
     bowling_game_init();
     bowling_game_roll(10);
@@ -45,6 +51,7 @@ int main(){
     test_all_ones();
     test_one_spare();
     test_one_strike();
+    test_perfect_game();
 
     return 0;
 }
