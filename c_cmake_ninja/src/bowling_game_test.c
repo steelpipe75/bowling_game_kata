@@ -1,8 +1,5 @@
 #include "bowling_game.h"
-
 #include <assert.h>
-#include <stdbool.h>
-
 
 static void roll_many(int n, int pins){
     int i;
