@@ -1,55 +1,67 @@
 #include "bowling_game.h"
+#include <stdlib.h>
 
 enum { max_rolls = 21 };
-static int rolls[max_rolls];
-static int current_roll;
+struct bowling_game{
+    int rolls[max_rolls];
+    int current_roll;
+};
 
-static bool is_strike(int frame_index){
-    return ( rolls[frame_index] == 10 );
+static bool is_strike(struct bowling_game * game, int frame_index){
+    return ( game->rolls[frame_index] == 10 );
 }
 
-static bool is_spare(int frame_index){
-    return ( (rolls[frame_index] + rolls[frame_index+1]) == 10 );
+static bool is_spare(struct bowling_game * game, int frame_index){
+    return ( (game->rolls[frame_index] + game->rolls[frame_index+1]) == 10 );
 }
 
-static int strike_score(int frame_index){
-    return 10 + rolls[frame_index+1] + rolls[frame_index+2];
+static int strike_score(struct bowling_game * game, int frame_index){
+    return 10 + game->rolls[frame_index+1] + game->rolls[frame_index+2];
 }
 
-static int spare_score(int frame_index){
-    return 10 + rolls[frame_index+2];
+static int spare_score(struct bowling_game * game, int frame_index){
+    return 10 + game->rolls[frame_index+2];
 }
 
-static int nomal_score(int frame_index){
-    return rolls[frame_index] + rolls[frame_index+1];
+static int nomal_score(struct bowling_game * game, int frame_index){
+    return game->rolls[frame_index] + game->rolls[frame_index+1];
 }
 
-void bowling_game_init(void){
+struct bowling_game * bowling_game_create(void){
+    struct bowling_game * game;
     int i;
+
+    game = malloc(sizeof(struct bowling_game));
     for(i=0; i<max_rolls; i++){
-        rolls[i] = 0;
+        game->rolls[i] = 0;
     }
-    current_roll = 0;
+    game->current_roll = 0;
+
+    return game;
 }
 
-void bowling_game_roll(int pins){
-    rolls[current_roll++] = pins;
+void bowling_game_destroy(struct bowling_game * game){
+    free(game);
 }
 
-int bowling_game_score(){
+void bowling_game_roll(struct bowling_game * game, int pins){
+    game->rolls[game->current_roll++] = pins;
+}
+
+int bowling_game_score(struct bowling_game * game){
     int score = 0;
     int frame_index;
     int frame;
     frame_index=0;
     for(frame=0; frame<10; frame++){
-        if( is_strike(frame_index) ){
-            score += strike_score(frame_index);
+        if( is_strike(game, frame_index) ){
+            score += strike_score(game, frame_index);
             frame_index += 1;
-        }else if( is_spare(frame_index) ){
-            score += spare_score(frame_index);
+        }else if( is_spare(game, frame_index) ){
+            score += spare_score(game, frame_index);
             frame_index += 2;
         }else{
-            score += nomal_score(frame_index);
+            score += nomal_score(game, frame_index);
             frame_index += 2;
         }
     }
