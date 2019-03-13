@@ -1,14 +1,16 @@
 #include "bowling_game.h"
 
-void bowling_game_init(void){
+static int score;
 
+void bowling_game_init(void){
+    score = 0;
 }
 
 void bowling_game_roll(int pins){
-
+    score += pins;
 }
 
 int bowling_game_score(){
-    return 0;
+    return score;
 }
 
