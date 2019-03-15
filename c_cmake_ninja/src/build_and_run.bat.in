@@ -1,8 +1,3 @@
 ninja
 ctest
-bowling_game_cli.exe <../data/testdata_gutter_game.txt
-bowling_game_cli.exe <../data/testdata_all_ones.txt
-bowling_game_cli.exe <../data/testdata_one_spare.txt
-bowling_game_cli.exe <../data/testdata_one_strike.txt
-bowling_game_cli.exe <../data/testdata_perfect_game.txt
 pause
