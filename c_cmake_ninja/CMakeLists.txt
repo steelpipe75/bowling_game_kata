@@ -18,7 +18,7 @@ add_test(
 add_executable(
     bowling_game_cli
     lib/bowling_game/src/bowling_game.c
-    bowling_game_cli.c
+    src/bowling_game_cli.c
 )
 
 macro(do_cli_test testname inputfile output)
