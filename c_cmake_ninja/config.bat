@@ -1,4 +1,6 @@
-mkdir build
+cd /D %~dp0
+if not exist build (
+    mkdir build
+)
 cd build
-cmake -S .. -G Ninja -DCMAKE_C_COMPILER=clang %*
-pause
+cmd /K cmake -S .. -G Ninja -DCMAKE_C_COMPILER=clang %*
