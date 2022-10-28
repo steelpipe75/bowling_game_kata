@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.13)
 
 project(bowling_game_cli)
 enable_testing()
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 include_directories(lib/bowling_game/src)
 
 add_executable(
