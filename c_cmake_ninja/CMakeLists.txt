@@ -100,4 +100,12 @@ do_cli_test(
     "can't open ../data/testdata_cant_open_inputfile.txt"
 )
 
+file(WRITE ${CMAKE_BINARY_DIR}/config.bat "cd /D %~dp0
+cmd /K cmake . %*
+")
+
+file(WRITE ${CMAKE_BINARY_DIR}/config-gui.bat "cd /D %~dp0
+cmake-gui . %*
+")
+
 configure_file(build_and_run.bat.in build_and_run.bat COPYONLY)
