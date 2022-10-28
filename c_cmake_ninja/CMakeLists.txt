@@ -100,12 +100,14 @@ do_cli_test(
     "can't open ../data/testdata_cant_open_inputfile.txt"
 )
 
-file(WRITE ${CMAKE_BINARY_DIR}/config.bat "cd /D %~dp0
-cmd /K cmake . %*
+file(WRITE ${CMAKE_BINARY_DIR}/config.bat "@echo off
+cd /D %~dp0
+cmake . %*
+cmd /K
 ")
 
 file(WRITE ${CMAKE_BINARY_DIR}/config-gui.bat "cd /D %~dp0
-cmake-gui . %*
+start cmake-gui . %*
 ")
 
 # ビルドとテストを実行するバッチ
