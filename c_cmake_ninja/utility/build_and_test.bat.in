@@ -1,0 +1,12 @@
+@echo off
+cd /D %~dp0
+
+echo ---- VVVV ---- build ---- VVVV ---- 
+ninja
+echo ---- AAAA ---- build ---- AAAA ---- 
+
+echo ---- VVVV ---- test ---- VVVV ---- 
+ctest
+echo ---- AAAA ---- test ---- AAAA ---- 
+
+cmd /K

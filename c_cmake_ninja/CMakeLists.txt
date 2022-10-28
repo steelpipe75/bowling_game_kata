@@ -108,4 +108,5 @@ file(WRITE ${CMAKE_BINARY_DIR}/config-gui.bat "cd /D %~dp0
 cmake-gui . %*
 ")
 
-configure_file(build_and_run.bat.in build_and_run.bat COPYONLY)
+# ビルドとテストを実行するバッチ
+configure_file(utility/build_and_test.bat.in build_and_test.bat COPYONLY)
