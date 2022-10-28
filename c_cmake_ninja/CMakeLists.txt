@@ -1,8 +1,16 @@
-cmake_minimum_required(VERSION 3.13)
+# 動作確認できたCMakeのバージョン
+cmake_minimum_required(VERSION 3.25)
 
-project(bowling_game C)
+# project情報
+project(bowling_game
+        DESCRIPTION "ボーリングのスコア計算 project"
+        LANGUAGES C
+)
+
+# CTestを有効にする
 enable_testing()
 
+# コンパイル情報をJSON形式で出力
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # in-source ビルドガード
