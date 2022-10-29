@@ -1,0 +1,5 @@
+rem @echo off
+setlocal
+%2 %3
+rename default.profraw %1.profraw
+endlocal

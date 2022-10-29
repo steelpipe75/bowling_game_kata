@@ -24,12 +24,25 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE
         STRING "Choose the type of build." FORCE)
     set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
-        "Debug" "Release")
+        "Debug" "Release" "Coverage")
 endif()
 
 set(CMAKE_C_FLAGS "-Wall -Wextra")
 set(CMAKE_C_FLAGS_DEBUG "-g -O0")
 set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
+set(CMAKE_C_FLAGS_COVERAGE "-g -O0 -fprofile-instr-generate -fcoverage-mapping")
+
+if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
+    configure_file(utility/coverage_test_luncher.bat.in coverage_test_luncher.bat COPYONLY)
+    set(TEST_LUNCHER "coverage_test_luncher.bat")
+    set(POST_TEST_PROCESS "call coverage_post_test_process.bat")
+    configure_file(utility/coverage_post_test_process.bat.in coverage_post_test_process.bat COPYONLY)
+else()
+    configure_file(utility/test_luncher.bat.in test_luncher.bat COPYONLY)
+    set(TEST_LUNCHER "test_luncher.bat")
+    unset(POST_TEST_PROCESS)
+endif()
+
 
 include_directories(lib/bowling_game/src)
 
@@ -41,7 +54,7 @@ add_executable(
 
 add_test(
     NAME bowling_game_test
-    COMMAND bowling_game_test.exe
+    COMMAND ${TEST_LUNCHER} bowling_game_test $<TARGET_FILE:bowling_game_test>
 )
 
 add_executable(
@@ -53,7 +66,7 @@ add_executable(
 macro(do_cli_test testname inputfile output)
     add_test(
         NAME bowling_game_cli_test_${testname}
-        COMMAND $<TARGET_FILE:bowling_game_cli> ${inputfile}
+        COMMAND ${TEST_LUNCHER} bowling_game_cli_test_${testname} $<TARGET_FILE:bowling_game_cli> ${inputfile}
         WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
     )
     set_tests_properties(
@@ -115,4 +128,4 @@ start cmake-gui . %*
 ")
 
 # ビルドとテストを実行するバッチ
-configure_file(utility/build_and_test.bat.in build_and_test.bat COPYONLY)
+configure_file(utility/build_and_test.bat.in build_and_test.bat)

@@ -1,0 +1,4 @@
+rem @echo off
+setlocal
+%2 %3
+endlocal

@@ -9,4 +9,6 @@ echo ---- VVVV ---- test ---- VVVV ----
 ctest
 echo ---- AAAA ---- test ---- AAAA ---- 
 
+@POST_TEST_PROCESS@
+
 cmd /K

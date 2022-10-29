@@ -1,0 +1,11 @@
+llvm-profdata merge bowling_game_test.profraw --output bowling_game_test.profdata
+echo;
+llvm-cov show -instr-profile bowling_game_test.profdata bowling_game_test.exe
+echo;
+llvm-cov report -instr-profile bowling_game_test.profdata bowling_game_test.exe
+
+llvm-profdata merge bowling_game_cli_*.profraw --output bowling_game_cli.profdata
+echo;
+llvm-cov show -instr-profile bowling_game_cli.profdata bowling_game_cli.exe
+echo;
+llvm-cov report -instr-profile bowling_game_cli.profdata bowling_game_cli.exe
