@@ -133,5 +133,9 @@ file(WRITE ${CMAKE_BINARY_DIR}/config-gui.bat "cd /D %~dp0
 start cmake-gui . %*
 ")
 
+file(WRITE ${CMAKE_BINARY_DIR}/ninja_-t_deps.bat "cd /D %~dp0
+ninja -t deps %*
+")
+
 # ビルドとテストを実行するバッチ
 configure_file(utility/build_and_test.bat.in build_and_test.bat)
