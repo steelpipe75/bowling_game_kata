@@ -83,31 +83,31 @@ endmacro()
 
 do_cli_test(
     all_ones
-    ../../testdata/testdata_all_ones.txt
+    ../../testdata/all_ones.txt
     20
 )
 
 do_cli_test(
     gutter_game
-    ../../testdata/testdata_gutter_game.txt
+    ../../testdata/gutter_game.txt
     0
 )
 
 do_cli_test(
     one_spare
-    ../../testdata/testdata_one_spare.txt
+    ../../testdata/one_spare.txt
     16
 )
 
 do_cli_test(
     one_strike
-    ../../testdata/testdata_one_strike.txt
+    ../../testdata/one_strike.txt
     24
 )
 
 do_cli_test(
     perfect_game
-    ../../testdata/testdata_perfect_game.txt
+    ../../testdata/perfect_game.txt
     300
 )
 
@@ -119,8 +119,8 @@ do_cli_test(
 
 do_cli_test(
     cant_open_inputfile
-    ../../testdata/testdata_cant_open_inputfile.txt
-    "can't open ../../testdata/testdata_cant_open_inputfile.txt"
+    ../../testdata/cant_open_inputfile.txt
+    "can't open ../../testdata/cant_open_inputfile.txt"
 )
 
 file(WRITE ${CMAKE_BINARY_DIR}/config.bat "@echo off
