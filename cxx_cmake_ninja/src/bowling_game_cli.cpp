@@ -1,8 +1,8 @@
+#include <iostream>
 #include "bowling_game.hpp"
-#include <stdio.h>
 
 int main(int argc, char *argv[]){
-    struct bowling_game * game;
+    bowling_game* pGame;
     int pins;
     FILE *fp;
     errno_t error;
@@ -14,21 +14,21 @@ int main(int argc, char *argv[]){
             return 1;
         }
 
-        game = bowling_game_create();
+        pGame = new bowling_game();
 
         while(1){
             fscanf(fp, "%d", &pins);
             if(pins < 0){
                 break;
             }else{
-                bowling_game_roll(game, pins);
+                pGame->roll(pins);
             }
         }
         fclose(fp);
 
-        printf_s("%d\n", bowling_game_score(game));
+        printf_s("%d\n", pGame->score());
 
-        bowling_game_destroy(game);
+        delete pGame;
 
         return 0;
     }else{

@@ -1,57 +1,48 @@
+#include <iostream>
+#include <cassert>
 #include "bowling_game.hpp"
-#include <assert.h>
 
-static void roll_many(struct bowling_game * game, int n, int pins){
+static void roll_many(bowling_game* pGame, int n, int pins){
     int i;
     for(i=0; i<n; i++){
-        bowling_game_roll(game, pins);
+        pGame->roll(pins);
     }
 }
 
 static void test_gutter_game(){
-    struct bowling_game * game;
-    game = bowling_game_create();
-    roll_many(game, 20, 0);
-    assert( bowling_game_score(game) == 0 && "test_gutter_game()" );
-    bowling_game_destroy(game);
+    bowling_game game;
+    roll_many(&game, 20, 0);
+    assert( game.score() == 0 && "test_gutter_game()" );
 }
 
 static void test_all_ones(){
-    struct bowling_game * game;
-    game = bowling_game_create();
-    roll_many(game, 20, 1);
-    assert( bowling_game_score(game) == 20 && "test_all_ones");
-    bowling_game_destroy(game);
+    bowling_game game;
+    roll_many(&game, 20, 1);
+    assert( game.score() == 20 && "test_all_ones");
 }
 
 static void test_one_spare(){
-    struct bowling_game * game;
-    game = bowling_game_create();
-    bowling_game_roll(game, 5);
-    bowling_game_roll(game, 5);   /* spare */
-    bowling_game_roll(game, 3);
-    roll_many(game, 17, 0);
-    assert( bowling_game_score(game) == 16 && "test_one_spare()" );
-    bowling_game_destroy(game);
+    bowling_game game;
+    game.roll(5);
+    game.roll(5);   /* spare */
+    game.roll(3);
+    roll_many(&game, 17, 0);
+    assert( game.score() == 16 && "test_one_spare()" );
 }
 
 static void test_one_strike(){
-    struct bowling_game * game;
-    game = bowling_game_create();
-    bowling_game_roll(game, 10);
-    bowling_game_roll(game, 3);
-    bowling_game_roll(game, 4);
-    roll_many(game, 16, 0);
-    assert( bowling_game_score(game) == 24 && "test_one_strike()" );
-    bowling_game_destroy(game);
+    bowling_game game;
+    game.roll(10);
+    game.roll(3);
+    game.roll(4);
+    roll_many(&game, 16, 0);
+    assert( game.score() == 24 && "test_one_strike()" );
 }
 
 static void test_perfect_game(){
-    struct bowling_game * game;
-    game = bowling_game_create();
-    roll_many(game, 12, 10);
-    assert( bowling_game_score(game) == 300 && "test_perfect_game()" );
-    bowling_game_destroy(game);
+    bowling_game game;
+    roll_many(&game, 12, 10);
+    assert( game.score() == 300 && "test_perfect_game()" );
 }
 
 int main(){
