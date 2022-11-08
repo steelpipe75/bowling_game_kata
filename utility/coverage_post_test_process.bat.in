@@ -1,10 +1,10 @@
-llvm-profdata merge bowling_game_test.profraw --output bowling_game_test.profdata
+llvm-profdata merge bowling_game_test_assert.profraw --output bowling_game_test_assert.profdata
 echo;
-llvm-cov show              -show-line-counts-or-regions --show-branches=count --show-expansions                                        -instr-profile bowling_game_test.profdata bowling_game_test.exe
-llvm-cov show -format=html -show-line-counts-or-regions --show-branches=count --show-expansions -output-dir=cov_html/bowling_game_test -instr-profile bowling_game_test.profdata bowling_game_test.exe 
+llvm-cov show              -show-line-counts-or-regions --show-branches=count --show-expansions                                        -instr-profile bowling_game_test_assert.profdata bowling_game_test_assert.exe
+llvm-cov show -format=html -show-line-counts-or-regions --show-branches=count --show-expansions -output-dir=cov_html/bowling_game_test_assert -instr-profile bowling_game_test_assert.profdata bowling_game_test_assert.exe 
 echo;
-llvm-cov report -instr-profile bowling_game_test.profdata bowling_game_test.exe
-llvm-cov report -instr-profile bowling_game_test.profdata bowling_game_test.exe >coverage_report_bowling_game_test.txt
+llvm-cov report -instr-profile bowling_game_test_assert.profdata bowling_game_test_assert.exe
+llvm-cov report -instr-profile bowling_game_test_assert.profdata bowling_game_test_assert.exe >coverage_report_bowling_game_test_assert.txt
 
 llvm-profdata merge bowling_game_cli_*.profraw --output bowling_game_cli.profdata
 echo;

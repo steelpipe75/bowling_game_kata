@@ -53,14 +53,14 @@ endif()
 include_directories(lib/bowling_game/src)
 
 add_executable(
-    bowling_game_test
+    bowling_game_test_assert
     lib/bowling_game/src/bowling_game.cpp
-    lib/bowling_game/test/bowling_game_test.cpp
+    lib/bowling_game/test/assert/bowling_game_test_assert.cpp
 )
 
 add_test(
-    NAME bowling_game_test
-    COMMAND ${TEST_LUNCHER} bowling_game_test $<TARGET_FILE:bowling_game_test>
+    NAME bowling_game_test_assert
+    COMMAND ${TEST_LUNCHER} bowling_game_test_assert $<TARGET_FILE:bowling_game_test_assert>
 )
 
 add_executable(
