@@ -52,6 +52,8 @@ endif()
 
 include_directories(lib/bowling_game/src)
 
+#################################################################################
+
 add_executable(
     bowling_game_test_assert
     lib/bowling_game/src/bowling_game.cpp
@@ -62,6 +64,8 @@ add_test(
     NAME bowling_game_test_assert
     COMMAND ${TEST_LUNCHER} bowling_game_test_assert $<TARGET_FILE:bowling_game_test_assert>
 )
+
+#################################################################################
 
 add_executable(
     bowling_game_cli
@@ -122,6 +126,146 @@ do_cli_test(
     ../../testdata/cant_open_inputfile.txt
     "can't open ../../testdata/cant_open_inputfile.txt"
 )
+
+#################################################################################
+
+add_library(
+    bowling_game_share
+    SHARED
+    lib/bowling_game/src/bowling_game.cpp
+)
+
+add_executable(
+    bowling_game_cli_shared
+    src/bowling_game_cli.cpp
+)
+
+target_link_libraries(bowling_game_cli_shared bowling_game_share)
+
+macro(do_cli_shared_test testname inputfile output)
+    add_test(
+        NAME bowling_game_cli_shared_test_${testname}
+        COMMAND ${TEST_LUNCHER} bowling_game_cli_shared_test_${testname} $<TARGET_FILE:bowling_game_cli_shared> ${inputfile}
+        WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+    )
+    set_tests_properties(
+        bowling_game_cli_shared_test_${testname} PROPERTIES
+        PASS_REGULAR_EXPRESSION ${output}
+    )
+endmacro()
+
+do_cli_shared_test(
+    all_ones
+    ../../testdata/all_ones.txt
+    20
+)
+
+do_cli_shared_test(
+    gutter_game
+    ../../testdata/gutter_game.txt
+    0
+)
+
+do_cli_shared_test(
+    one_spare
+    ../../testdata/one_spare.txt
+    16
+)
+
+do_cli_shared_test(
+    one_strike
+    ../../testdata/one_strike.txt
+    24
+)
+
+do_cli_shared_test(
+    perfect_game
+    ../../testdata/perfect_game.txt
+    300
+)
+
+do_cli_shared_test(
+    no_inputfile
+    ""
+    "usage: $<TARGET_FILE:bowling_game_cli_shared> inputfilename"
+)
+
+do_cli_shared_test(
+    cant_open_inputfile
+    ../../testdata/cant_open_inputfile.txt
+    "can't open ../../testdata/cant_open_inputfile.txt"
+)
+
+#################################################################################
+
+add_library(
+    bowling_game_static
+    STATIC
+    lib/bowling_game/src/bowling_game.cpp
+)
+
+add_executable(
+    bowling_game_cli_static
+    src/bowling_game_cli.cpp
+)
+
+target_link_libraries(bowling_game_cli_static bowling_game_static)
+
+macro(do_cli_static_test testname inputfile output)
+    add_test(
+        NAME bowling_game_cli_static_test_${testname}
+        COMMAND ${TEST_LUNCHER} bowling_game_cli_static_test_${testname} $<TARGET_FILE:bowling_game_cli_static> ${inputfile}
+        WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+    )
+    set_tests_properties(
+        bowling_game_cli_static_test_${testname} PROPERTIES
+        PASS_REGULAR_EXPRESSION ${output}
+    )
+endmacro()
+
+do_cli_static_test(
+    all_ones
+    ../../testdata/all_ones.txt
+    20
+)
+
+do_cli_static_test(
+    gutter_game
+    ../../testdata/gutter_game.txt
+    0
+)
+
+do_cli_static_test(
+    one_spare
+    ../../testdata/one_spare.txt
+    16
+)
+
+do_cli_static_test(
+    one_strike
+    ../../testdata/one_strike.txt
+    24
+)
+
+do_cli_static_test(
+    perfect_game
+    ../../testdata/perfect_game.txt
+    300
+)
+
+do_cli_static_test(
+    no_inputfile
+    ""
+    "usage: $<TARGET_FILE:bowling_game_cli_static> inputfilename"
+)
+
+do_cli_static_test(
+    cant_open_inputfile
+    ../../testdata/cant_open_inputfile.txt
+    "can't open ../../testdata/cant_open_inputfile.txt"
+)
+
+#################################################################################
 
 file(WRITE ${CMAKE_BINARY_DIR}/config.bat "@echo off
 cd /D %~dp0
