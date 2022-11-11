@@ -52,6 +52,8 @@ endif()
 
 include_directories(lib/bowling_game/src)
 
+#################################################################################
+
 add_executable(
     bowling_game_test_assert
     lib/bowling_game/src/bowling_game.c
