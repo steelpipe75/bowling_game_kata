@@ -18,6 +18,20 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
     message(FATAL_ERROR "In-source builds not allowed. Please make a new directory (called a build directory) and run CMake from there. You may need to remove CMakeCache.txt. ")
 endif()
 
+#################################################################################
+
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  # Specify the commit you depend on and update it regularly.
+  URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+#################################################################################
+
 set(default_build_type "Debug")
 if(NOT CMAKE_BUILD_TYPE)
     message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
@@ -63,6 +77,21 @@ add_executable(
 add_test(
     NAME bowling_game_test_assert
     COMMAND ${TEST_LUNCHER} bowling_game_test_assert $<TARGET_FILE:bowling_game_test_assert>
+)
+
+#################################################################################
+
+add_executable(
+    bowling_game_test_gtest
+    lib/bowling_game/src/bowling_game.cpp
+    lib/bowling_game/test/gtest/bowling_game_test_gtest.cpp
+)
+
+target_link_libraries(bowling_game_test_gtest gtest_main)
+
+add_test(
+    NAME bowling_game_test_gtest
+    COMMAND ${TEST_LUNCHER} bowling_game_test_gtest $<TARGET_FILE:bowling_game_test_gtest>
 )
 
 #################################################################################
