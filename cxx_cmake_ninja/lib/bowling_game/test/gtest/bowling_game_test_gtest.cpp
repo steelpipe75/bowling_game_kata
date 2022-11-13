@@ -7,40 +7,40 @@ namespace {
 
 // The fixture for testing class bowling_game.
 class bowling_game_test : public ::testing::Test {
- protected:
-  // You can remove any or all of the following functions if their bodies would
-  // be empty.
+  protected:
+    // You can remove any or all of the following functions if their bodies would
+    // be empty.
 
-  bowling_game_test() {
-     // You can do set-up work for each test here.
-  }
+    bowling_game_test() {
+        // You can do set-up work for each test here.
+    }
 
-  ~bowling_game_test() override {
-     // You can do clean-up work that doesn't throw exceptions here.
-  }
+    ~bowling_game_test() override {
+        // You can do clean-up work that doesn't throw exceptions here.
+    }
 
-  // If the constructor and destructor are not enough for setting up
-  // and cleaning up each test, you can define the following methods:
+    // If the constructor and destructor are not enough for setting up
+    // and cleaning up each test, you can define the following methods:
 
-  void SetUp() override {
-     // Code here will be called immediately after the constructor (right
-     // before each test).
-  }
+    void SetUp() override {
+        // Code here will be called immediately after the constructor (right
+        // before each test).
+    }
 
-  void TearDown() override {
-     // Code here will be called immediately after each test (right
-     // before the destructor).
-  }
+    void TearDown() override {
+        // Code here will be called immediately after each test (right
+        // before the destructor).
+    }
 
-  // Class members declared here can be used by all tests in the test suite
-  // for bowling_game.
+    // Class members declared here can be used by all tests in the test suite
+    // for bowling_game.
 
-  static void roll_many(bowling_game* pGame, int n, int pins){
-    int i;
-    for(i=0; i<n; i++){
-        pGame->roll(pins);
-  }
-}
+    static void roll_many(bowling_game* pGame, int n, int pins){
+        int i;
+        for(i=0; i<n; i++){
+            pGame->roll(pins);
+        }
+    }
 };
 
 TEST_F(bowling_game_test, gutter_game) {
