@@ -86,21 +86,6 @@ add_test(
 #################################################################################
 
 add_executable(
-    bowling_game_test_gtest
-    lib/bowling_game/src/bowling_game.c
-    lib/bowling_game/test/gtest/bowling_game_test_gtest.cpp
-)
-
-target_link_libraries(bowling_game_test_gtest gtest_main)
-
-add_test(
-    NAME bowling_game_test_gtest
-    COMMAND ${TEST_LUNCHER} bowling_game_test_gtest $<TARGET_FILE:bowling_game_test_gtest>
-)
-
-#################################################################################
-
-add_executable(
     bowling_game_cli
     lib/bowling_game/src/bowling_game.c
     src/bowling_game_cli.c
