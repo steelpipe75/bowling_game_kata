@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.25)
 # project情報
 project(bowling_game
         DESCRIPTION "ボーリングのスコア計算 project"
-        LANGUAGES C CXX
+        LANGUAGES C
 )
 
 # CTestを有効にする
@@ -22,12 +22,10 @@ endif()
 
 include(FetchContent)
 FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
+    PCUnit
+    URL https://github.com/steelpipe75/PCUnit/archive/51cf60c9c8d14ed599af46a42abf6282637918aa.zip
 )
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+FetchContent_MakeAvailable(PCUnit)
 
 #################################################################################
 
@@ -44,11 +42,6 @@ set(CMAKE_C_FLAGS "-Wall -Wextra")
 set(CMAKE_C_FLAGS_DEBUG "-g -O0")
 set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
 set(CMAKE_C_FLAGS_COVERAGE "-g -O0 -fprofile-instr-generate -fcoverage-mapping")
-
-set(CMAKE_CXX_FLAGS "-Wall -Wextra")
-set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
-set(CMAKE_CXX_FLAGS_COVERAGE "-g -O0 -fprofile-instr-generate -fcoverage-mapping")
 
 if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
     configure_file(../utility/coverage_test_luncher.bat.in coverage_test_luncher.bat COPYONLY)
@@ -86,16 +79,18 @@ add_test(
 #################################################################################
 
 add_executable(
-    bowling_game_test_gtest
+    bowling_game_test_pcunit
     lib/bowling_game/src/bowling_game.c
-    lib/bowling_game/test/gtest/bowling_game_test_gtest.cpp
+    lib/bowling_game/test/pcunit/bowling_game_test_pcunit.c
 )
 
-target_link_libraries(bowling_game_test_gtest gtest_main)
+target_link_libraries(bowling_game_test_pcunit PCUnit)
+
+target_include_directories(bowling_game_test_pcunit PUBLIC ${CMAKE_BINARY_DIR}/_deps/pcunit-src)
 
 add_test(
-    NAME bowling_game_test_gtest
-    COMMAND ${TEST_LUNCHER} bowling_game_test_gtest $<TARGET_FILE:bowling_game_test_gtest>
+    NAME bowling_game_test_pcunit
+    COMMAND ${TEST_LUNCHER} bowling_game_test_pcunit $<TARGET_FILE:bowling_game_test_pcunit>
 )
 
 #################################################################################
