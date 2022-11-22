@@ -82,5 +82,6 @@ int main(void)
         BowlingGameTest_suite,
     };
     PCU_set_putchar(putchar);
+    PCU_enable_color();
     return PCU_run(suites, sizeof suites / sizeof suites[0]);
 }
