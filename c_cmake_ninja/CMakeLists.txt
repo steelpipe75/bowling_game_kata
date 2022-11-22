@@ -49,7 +49,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
     set(POST_TEST_PROCESS "call coverage_post_test_process.bat")
     configure_file(../utility/coverage_post_test_process.bat.in coverage_post_test_process.bat COPYONLY)
 elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    configure_file(../utility/launch.json.in ${CMAKE_BINARY_DIR}/../.vscode/launch.json COPYONLY)
+    configure_file(./utility/launch.json.c.in ${CMAKE_BINARY_DIR}/../.vscode/launch.json COPYONLY)
     
     configure_file(../utility/test_luncher.bat.in test_luncher.bat COPYONLY)
     set(TEST_LUNCHER "test_luncher.bat")
