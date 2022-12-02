@@ -20,10 +20,16 @@ endif()
 
 #################################################################################
 
+if("$ENV{GOOGLETEST_PATH}" STREQUAL "")
+    message(FATAL_ERROR "GOOGLETEST_PATH not set. Please set the environment variable GOOGLETEST_PATH to the path where googletest is located. ")
+endif()
+
+file(TO_CMAKE_PATH $ENV{GOOGLETEST_PATH} GOOGLETEST_CMAKE_PATH)
+
 include(FetchContent)
 FetchContent_Declare(
     googletest
-    URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
+    URL file://${GOOGLETEST_CMAKE_PATH}
 )
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
