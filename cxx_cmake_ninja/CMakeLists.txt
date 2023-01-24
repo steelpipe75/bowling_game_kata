@@ -1,5 +1,5 @@
 # 動作確認できたCMakeのバージョン
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.16)
 
 # project情報
 project(bowling_game
@@ -20,17 +20,30 @@ endif()
 
 #################################################################################
 
-if("$ENV{GOOGLETEST_PATH}" STREQUAL "")
-    message(FATAL_ERROR "GOOGLETEST_PATH not set. Please set the environment variable GOOGLETEST_PATH to the path where googletest is located. ")
+include(FetchContent)
+
+# Avoid warnings in CMake 3.24.0:
+if (CMAKE_VERSION VERSION_GREATER "3.24.0")
+    cmake_policy(SET CMP0135 NEW)
 endif()
 
-file(TO_CMAKE_PATH $ENV{GOOGLETEST_PATH} GOOGLETEST_CMAKE_PATH)
+if("$ENV{GOOGLETEST_PATH}" STREQUAL "")
+    set(gtest_url https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip)
+    message(NOTICE "googletest download ${gtest_url}")
+    FetchContent_Declare(
+        googletest
+        URL ${gtest_url}
+    )
+else()
+    file(TO_CMAKE_PATH $ENV{GOOGLETEST_PATH} GOOGLETEST_CMAKE_PATH)
 
-include(FetchContent)
-FetchContent_Declare(
-    googletest
-    URL file://${GOOGLETEST_CMAKE_PATH}
-)
+    message(NOTICE "googletest using file://${GOOGLETEST_CMAKE_PATH}")
+    FetchContent_Declare(
+        googletest
+        URL file://${GOOGLETEST_CMAKE_PATH}
+    )
+endif()
+
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
