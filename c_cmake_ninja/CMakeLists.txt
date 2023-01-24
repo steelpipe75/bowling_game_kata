@@ -1,5 +1,5 @@
 # 動作確認できたCMakeのバージョン
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.16)
 
 # project情報
 project(bowling_game
@@ -23,7 +23,7 @@ endif()
 include(FetchContent)
 FetchContent_Declare(
     PCUnit
-    URL https://github.com/steelpipe75/PCUnit/archive/51cf60c9c8d14ed599af46a42abf6282637918aa.zip
+    URL https://github.com/steelpipe75/PCUnit/archive/4ad20e36ae9df8739ed8e1cf3f4f1fa593f6d8db.zip
 )
 FetchContent_MakeAvailable(PCUnit)
 
