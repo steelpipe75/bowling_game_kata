@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
 #else /* #ifdef __STDC_LIB_EXT1__ */
         fp = fopen(argv[1], "r");
         if(fp == NULL){
-            printf_s("can't open %s\n", argv[1]);
+            printf("can't open %s\n", argv[1]);
             return 1;
         }
 #endif /* #ifdef __STDC_LIB_EXT1__ */
@@ -37,13 +37,21 @@ int main(int argc, char *argv[]){
         }
         fclose(fp);
 
+#ifdef __STDC_LIB_EXT1__
         printf_s("%d\n", pGame->score());
+#else /* #ifdef __STDC_LIB_EXT1__ */
+        printf("%d\n", pGame->score());
+#endif /* #ifdef __STDC_LIB_EXT1__ */
 
         delete pGame;
 
         return 0;
     }else{
+#ifdef __STDC_LIB_EXT1__
         printf_s("usage: %s inputfilename\n", argv[0]);
+#else /* #ifdef __STDC_LIB_EXT1__ */
+        printf("usage: %s inputfilename\n", argv[0]);
+#endif /* #ifdef __STDC_LIB_EXT1__ */
 
         return 1;
     }
