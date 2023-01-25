@@ -1,6 +1,5 @@
-cd /D %~dp0
-if not exist build (
+if [ ! -e build ]; then
     mkdir build
-)
+fi
 cd build
-cmd /K cmake -S .. -DCMAKE_C_COMPILER=clang %*
+cmake -S .. -DCMAKE_C_COMPILER=clang
