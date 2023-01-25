@@ -3,3 +3,4 @@ if [ ! -e build ]; then
 fi
 cd build
 cmake -S .. -DCMAKE_CXX_COMPILER=clang++
+
