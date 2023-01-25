@@ -37,7 +37,7 @@ jobs:
 
     - name: Coverage
       working-directory: ${{github.workspace}}/c_cmake/build
-      run: sh coverage_post_test_process
+      run: sh coverage_post_test_process.sh
 
   cxx_build:
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
@@ -65,5 +65,5 @@ jobs:
 
     - name: Coverage
       working-directory: ${{github.workspace}}/cxx_cmake/build
-      run: sh coverage_post_test_process
+      run: sh coverage_post_test_process.sh
 
