@@ -1,0 +1,2 @@
+$2 $3
+mv --force ./default.profraw ./$1.profraw
