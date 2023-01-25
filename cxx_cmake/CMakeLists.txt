@@ -111,10 +111,17 @@ add_executable(
     lib/bowling_game/test/assert/bowling_game_test_assert.cpp
 )
 
-add_test(
-    NAME bowling_game_test_assert
-    COMMAND ${TEST_LUNCHER} bowling_game_test_assert $<TARGET_FILE:bowling_game_test_assert>
-)
+if(WIN32)
+    add_test(
+        NAME bowling_game_test_assert
+        COMMAND ${TEST_LUNCHER} bowling_game_test_assert $<TARGET_FILE:bowling_game_test_assert>
+    )
+elseif(UNIX)
+    add_test(
+        NAME bowling_game_test_assert
+        COMMAND sh ${TEST_LUNCHER} bowling_game_test_assert $<TARGET_FILE:bowling_game_test_assert>
+    )
+endif()
 
 #################################################################################
 
@@ -126,10 +133,17 @@ add_executable(
 
 target_link_libraries(bowling_game_test_gtest gtest_main)
 
-add_test(
-    NAME bowling_game_test_gtest
-    COMMAND ${TEST_LUNCHER} bowling_game_test_gtest $<TARGET_FILE:bowling_game_test_gtest>
-)
+if(WIN32)
+    add_test(
+        NAME bowling_game_test_gtest
+        COMMAND ${TEST_LUNCHER} bowling_game_test_gtest $<TARGET_FILE:bowling_game_test_gtest>
+    )
+elseif(UNIX)
+    add_test(
+        NAME bowling_game_test_gtest
+        COMMAND sh ${TEST_LUNCHER} bowling_game_test_gtest $<TARGET_FILE:bowling_game_test_gtest>
+    )
+endif()
 
 #################################################################################
 
@@ -140,11 +154,19 @@ add_executable(
 )
 
 macro(do_cli_test testname inputfile output)
-    add_test(
-        NAME bowling_game_cli_test_${testname}
-        COMMAND ${TEST_LUNCHER} bowling_game_cli_test_${testname} $<TARGET_FILE:bowling_game_cli> ${inputfile}
-        WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
-    )
+    if(WIN32)
+        add_test(
+            NAME bowling_game_cli_test_${testname}
+            COMMAND ${TEST_LUNCHER} bowling_game_cli_test_${testname} $<TARGET_FILE:bowling_game_cli> ${inputfile}
+            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+        )
+    elseif(UNIX)
+        add_test(
+            NAME bowling_game_cli_test_${testname}
+            COMMAND sh ${TEST_LUNCHER} bowling_game_cli_test_${testname} $<TARGET_FILE:bowling_game_cli> ${inputfile}
+            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+        )
+    endif()
     set_tests_properties(
         bowling_game_cli_test_${testname} PROPERTIES
         PASS_REGULAR_EXPRESSION ${output}
@@ -209,11 +231,19 @@ add_executable(
 target_link_libraries(bowling_game_cli_shared bowling_game_share)
 
 macro(do_cli_shared_test testname inputfile output)
-    add_test(
-        NAME bowling_game_cli_shared_test_${testname}
-        COMMAND ${TEST_LUNCHER} bowling_game_cli_shared_test_${testname} $<TARGET_FILE:bowling_game_cli_shared> ${inputfile}
-        WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
-    )
+    if(WIN32)
+        add_test(
+            NAME bowling_game_cli_shared_test_${testname}
+            COMMAND ${TEST_LUNCHER} bowling_game_cli_shared_test_${testname} $<TARGET_FILE:bowling_game_cli_shared> ${inputfile}
+            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+        )
+    elseif(UNIX)
+        add_test(
+            NAME bowling_game_cli_shared_test_${testname}
+            COMMAND sh ${TEST_LUNCHER} bowling_game_cli_shared_test_${testname} $<TARGET_FILE:bowling_game_cli_shared> ${inputfile}
+            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+        )
+    endif()
     set_tests_properties(
         bowling_game_cli_shared_test_${testname} PROPERTIES
         PASS_REGULAR_EXPRESSION ${output}
@@ -278,11 +308,19 @@ add_executable(
 target_link_libraries(bowling_game_cli_static bowling_game_static)
 
 macro(do_cli_static_test testname inputfile output)
-    add_test(
-        NAME bowling_game_cli_static_test_${testname}
-        COMMAND ${TEST_LUNCHER} bowling_game_cli_static_test_${testname} $<TARGET_FILE:bowling_game_cli_static> ${inputfile}
-        WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
-    )
+    if(WIN32)
+        add_test(
+            NAME bowling_game_cli_static_test_${testname}
+            COMMAND ${TEST_LUNCHER} bowling_game_cli_static_test_${testname} $<TARGET_FILE:bowling_game_cli_static> ${inputfile}
+            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+        )
+    elseif(UNIX)
+        add_test(
+            NAME bowling_game_cli_static_test_${testname}
+            COMMAND sh ${TEST_LUNCHER} bowling_game_cli_static_test_${testname} $<TARGET_FILE:bowling_game_cli_static> ${inputfile}
+            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+        )
+    endif()
     set_tests_properties(
         bowling_game_cli_static_test_${testname} PROPERTIES
         PASS_REGULAR_EXPRESSION ${output}
