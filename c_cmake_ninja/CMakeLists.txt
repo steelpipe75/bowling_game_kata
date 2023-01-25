@@ -21,6 +21,12 @@ endif()
 #################################################################################
 
 include(FetchContent)
+
+# Avoid warnings in CMake 3.24.0:
+if (CMAKE_VERSION VERSION_GREATER "3.24.0")
+    cmake_policy(SET CMP0135 NEW)
+endif()
+
 FetchContent_Declare(
     PCUnit
     URL https://github.com/steelpipe75/PCUnit/archive/4ad20e36ae9df8739ed8e1cf3f4f1fa593f6d8db.zip
