@@ -34,24 +34,3 @@ class BowlingGame():
     def spare_bonus(self, frame_index: int) -> int:
         return self.rolls[frame_index + 2]
 
-
-if __name__ == '__main__':
-    game = BowlingGame()
-
-    game.roll(10)
-    game.roll(10)
-    game.roll(10)
-    game.roll(10)
-    game.roll(10)
-    game.roll(10)
-    game.roll(10)
-    game.roll(10)
-    game.roll(10)
-    game.roll(10)
-    game.roll(10)
-    game.roll(10)
-
-    score = game.score()
-    print(score)
-
-    pass
