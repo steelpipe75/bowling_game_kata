@@ -13,7 +13,7 @@ static void roll_many(struct bowling_game * game, int n, int pins){
 
 /* ------------------------------------- */
 
-static void test_gutter_game(){
+static void test_all_zeros(){
     struct bowling_game * game;
     game = bowling_game_create();
     roll_many(game, 20, 0);
@@ -64,7 +64,7 @@ static void test_perfect_game(){
 PCU_Suite *BowlingGameTest_suite(void)
 {
     static PCU_Test tests[] = {
-        { "test_gutter_game",   test_gutter_game,   },
+        { "test_all_zeros",     test_all_zeros,     },
         { "test_all_ones",      test_all_ones,      },
         { "test_one_spare",     test_one_spare,     },
         { "test_one_strike",    test_one_strike,    },

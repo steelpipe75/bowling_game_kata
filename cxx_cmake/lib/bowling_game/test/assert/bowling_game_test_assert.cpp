@@ -9,10 +9,10 @@ static void roll_many(bowling_game* pGame, int n, int pins){
     }
 }
 
-static void test_gutter_game(){
+static void test_all_zeros(){
     bowling_game game;
     roll_many(&game, 20, 0);
-    assert( game.score() == 0 && "test_gutter_game()" );
+    assert( game.score() == 0 && "test_all_zeros()" );
 }
 
 static void test_all_ones(){
@@ -46,7 +46,7 @@ static void test_perfect_game(){
 }
 
 int main(){
-    test_gutter_game();
+    test_all_zeros();
     test_all_ones();
     test_one_spare();
     test_one_strike();

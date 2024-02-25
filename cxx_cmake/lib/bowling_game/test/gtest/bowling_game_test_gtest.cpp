@@ -43,7 +43,7 @@ class bowling_game_test : public ::testing::Test {
     }
 };
 
-TEST_F(bowling_game_test, gutter_game) {
+TEST_F(bowling_game_test, all_zeros) {
     bowling_game game;
     roll_many(&game, 20, 0);
     EXPECT_EQ(0, game.score());

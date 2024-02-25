@@ -8,11 +8,11 @@ static void roll_many(struct bowling_game * game, int n, int pins){
     }
 }
 
-static void test_gutter_game(){
+static void test_all_zeros(){
     struct bowling_game * game;
     game = bowling_game_create();
     roll_many(game, 20, 0);
-    assert( bowling_game_score(game) == 0 && "test_gutter_game()" );
+    assert( bowling_game_score(game) == 0 && "test_all_zeros()" );
     bowling_game_destroy(game);
 }
 
@@ -55,7 +55,7 @@ static void test_perfect_game(){
 }
 
 int main(){
-    test_gutter_game();
+    test_all_zeros();
     test_all_ones();
     test_one_spare();
     test_one_strike();
