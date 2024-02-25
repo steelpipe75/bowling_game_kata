@@ -180,8 +180,8 @@ do_cli_test(
 )
 
 do_cli_test(
-    gutter_game
-    ../../testdata/gutter_game.txt
+    all_zeros
+    ../../testdata/all_zeros.txt
     0
 )
 
@@ -257,8 +257,8 @@ do_cli_shared_test(
 )
 
 do_cli_shared_test(
-    gutter_game
-    ../../testdata/gutter_game.txt
+    all_zeros
+    ../../testdata/all_zeros.txt
     0
 )
 
@@ -334,8 +334,8 @@ do_cli_static_test(
 )
 
 do_cli_static_test(
-    gutter_game
-    ../../testdata/gutter_game.txt
+    all_zeros
+    ../../testdata/all_zeros.txt
     0
 )
 
