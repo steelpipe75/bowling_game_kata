@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 
 # project情報
 project(bowling_game
-        DESCRIPTION "ボーリングのスコア計算 project"
+        DESCRIPTION "ボーリングのスコア計算 cliツール project"
         LANGUAGES C
 )
 
@@ -85,13 +85,17 @@ elseif(UNIX)
     endif()
 endif()
 
+#################################################################################
+
+add_subdirectory(lib/bowling_game)
+
+#################################################################################
 
 include_directories(lib/bowling_game/src)
 
 #################################################################################
 
-add_executable(
-    bowling_game_test_assert
+add_executable(bowling_game_test_assert
     lib/bowling_game/src/bowling_game.c
     lib/bowling_game/test/assert/bowling_game_test_assert.c
 )
@@ -205,12 +209,6 @@ do_cli_test(
 
 #################################################################################
 
-add_library(
-    bowling_game_share
-    SHARED
-    lib/bowling_game/src/bowling_game.c
-)
-
 add_executable(
     bowling_game_cli_shared
     src/bowling_game_cli.c
@@ -281,12 +279,6 @@ do_cli_shared_test(
 )
 
 #################################################################################
-
-add_library(
-    bowling_game_static
-    STATIC
-    lib/bowling_game/src/bowling_game.c
-)
 
 add_executable(
     bowling_game_cli_static
