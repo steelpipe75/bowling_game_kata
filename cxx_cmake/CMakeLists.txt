@@ -52,7 +52,7 @@ include(GoogleTest)
 
 #################################################################################
 
-set(default_build_type "Debug")
+set(default_build_type "Coverage")
 if(NOT CMAKE_BUILD_TYPE)
     message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
     set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE
