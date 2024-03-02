@@ -1,5 +1,5 @@
 # 動作確認できたCMakeのバージョン
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.25.0)
 
 # project情報
 project(bowling_game
@@ -156,6 +156,22 @@ gtest_discover_tests(bowling_game_test_gtest)
 
 #################################################################################
 
+macro(find_test_data testfile variable)
+    find_file(${variable}
+        ${testfile}
+        HINTS "${CMAKE_SOURCE_DIR}/../testdata/"
+        REQUIRED
+    )
+endmacro()
+
+find_test_data(all_ones.txt             input_file_path_all_one_test        )
+find_test_data(all_zeros.txt            input_file_path_all_zeros           )
+find_test_data(one_spare.txt            input_file_path_one_spare           )
+find_test_data(one_strike.txt           input_file_path_one_strike          )
+find_test_data(perfect_game.txt         input_file_path_perfect_game        )
+
+#################################################################################
+
 add_executable(
     bowling_game_cli
     lib/bowling_game/src/bowling_game.cpp
@@ -167,13 +183,13 @@ macro(do_cli_test testname inputfile output)
         add_test(
             NAME bowling_game_cli_test_${testname}
             COMMAND ${TEST_LUNCHER} bowling_game_cli_test_${testname} $<TARGET_FILE:bowling_game_cli> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
         )
     elseif(UNIX)
         add_test(
             NAME bowling_game_cli_test_${testname}
             COMMAND sh ${TEST_LUNCHER} bowling_game_cli_test_${testname} $<TARGET_FILE:bowling_game_cli> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
         )
     endif()
     set_tests_properties(
@@ -184,31 +200,31 @@ endmacro()
 
 do_cli_test(
     all_ones
-    ../../testdata/all_ones.txt
+    ${input_file_path_all_one_test}/all_ones.txt 
     20
 )
 
 do_cli_test(
     all_zeros
-    ../../testdata/all_zeros.txt
+    ${input_file_path_all_zeros}/all_zeros.txt 
     0
 )
 
 do_cli_test(
     one_spare
-    ../../testdata/one_spare.txt
+    ${input_file_path_one_spare}/one_spare.txt
     16
 )
 
 do_cli_test(
     one_strike
-    ../../testdata/one_strike.txt
+    ${input_file_path_one_strike}/one_strike.txt
     24
 )
 
 do_cli_test(
     perfect_game
-    ../../testdata/perfect_game.txt
+    ${input_file_path_perfect_game}/perfect_game.txt
     300
 )
 
@@ -220,8 +236,8 @@ do_cli_test(
 
 do_cli_test(
     cant_open_inputfile
-    ../../testdata/cant_open_inputfile.txt
-    "can't open ../../testdata/cant_open_inputfile.txt"
+    cant_open_inputfile.txt
+    "can't open cant_open_inputfile.txt"
 )
 
 #################################################################################
@@ -238,13 +254,13 @@ macro(do_cli_shared_test testname inputfile output)
         add_test(
             NAME bowling_game_cli_shared_test_${testname}
             COMMAND ${TEST_LUNCHER} bowling_game_cli_shared_test_${testname} $<TARGET_FILE:bowling_game_cli_shared> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
         )
     elseif(UNIX)
         add_test(
             NAME bowling_game_cli_shared_test_${testname}
             COMMAND sh ${TEST_LUNCHER} bowling_game_cli_shared_test_${testname} $<TARGET_FILE:bowling_game_cli_shared> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
         )
     endif()
     set_tests_properties(
@@ -260,31 +276,31 @@ add_custom_command(
 
 do_cli_shared_test(
     all_ones
-    ../../testdata/all_ones.txt
+    ${input_file_path_all_one_test}/all_ones.txt 
     20
 )
 
 do_cli_shared_test(
     all_zeros
-    ../../testdata/all_zeros.txt
+    ${input_file_path_all_zeros}/all_zeros.txt 
     0
 )
 
 do_cli_shared_test(
     one_spare
-    ../../testdata/one_spare.txt
+    ${input_file_path_one_spare}/one_spare.txt
     16
 )
 
 do_cli_shared_test(
     one_strike
-    ../../testdata/one_strike.txt
+    ${input_file_path_one_strike}/one_strike.txt
     24
 )
 
 do_cli_shared_test(
     perfect_game
-    ../../testdata/perfect_game.txt
+    ${input_file_path_perfect_game}/perfect_game.txt
     300
 )
 
@@ -296,8 +312,8 @@ do_cli_shared_test(
 
 do_cli_shared_test(
     cant_open_inputfile
-    ../../testdata/cant_open_inputfile.txt
-    "can't open ../../testdata/cant_open_inputfile.txt"
+    cant_open_inputfile.txt
+    "can't open cant_open_inputfile.txt"
 )
 
 #################################################################################
@@ -314,13 +330,13 @@ macro(do_cli_static_test testname inputfile output)
         add_test(
             NAME bowling_game_cli_static_test_${testname}
             COMMAND ${TEST_LUNCHER} bowling_game_cli_static_test_${testname} $<TARGET_FILE:bowling_game_cli_static> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
         )
     elseif(UNIX)
         add_test(
             NAME bowling_game_cli_static_test_${testname}
             COMMAND sh ${TEST_LUNCHER} bowling_game_cli_static_test_${testname} $<TARGET_FILE:bowling_game_cli_static> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAIBARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
         )
     endif()
     set_tests_properties(
@@ -331,31 +347,31 @@ endmacro()
 
 do_cli_static_test(
     all_ones
-    ../../testdata/all_ones.txt
+    ${input_file_path_all_one_test}/all_ones.txt 
     20
 )
 
 do_cli_static_test(
     all_zeros
-    ../../testdata/all_zeros.txt
+    ${input_file_path_all_zeros}/all_zeros.txt 
     0
 )
 
 do_cli_static_test(
     one_spare
-    ../../testdata/one_spare.txt
+    ${input_file_path_one_spare}/one_spare.txt
     16
 )
 
 do_cli_static_test(
     one_strike
-    ../../testdata/one_strike.txt
+    ${input_file_path_one_strike}/one_strike.txt
     24
 )
 
 do_cli_static_test(
     perfect_game
-    ../../testdata/perfect_game.txt
+    ${input_file_path_perfect_game}/perfect_game.txt
     300
 )
 
@@ -367,8 +383,8 @@ do_cli_static_test(
 
 do_cli_static_test(
     cant_open_inputfile
-    ../../testdata/cant_open_inputfile.txt
-    "can't open ../../testdata/cant_open_inputfile.txt"
+    cant_open_inputfile.txt
+    "can't open cant_open_inputfile.txt"
 )
 
 #################################################################################
