@@ -236,6 +236,11 @@ macro(do_cli_shared_test testname inputfile output)
     )
 endmacro()
 
+add_custom_command(
+  TARGET bowling_game_cli_shared POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_share> $<TARGET_FILE_DIR:bowling_game_cli_shared>
+)
+
 do_cli_shared_test(
     all_ones
     ../../testdata/all_ones.txt
