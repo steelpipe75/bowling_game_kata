@@ -10,7 +10,7 @@
             "MIMode": "lldb",
             "stopAtEntry": true,
             "name": "[cppdbg] Debug bowling_game_test_assert",
-            "program": "${workspaceFolder}/build/bowling_game_test_assert.exe",
+            "program": "${workspaceFolder}/bowling_game_test_assert.exe",
             "args": [],
             "cwd": "${workspaceFolder}"
         },
@@ -20,7 +20,7 @@
             "MIMode": "lldb",
             "stopAtEntry": true,
             "name": "[cppdbg] Debug bowling_game_test_gtest",
-            "program": "${workspaceFolder}/build/bowling_game_test_gtest.exe",
+            "program": "${workspaceFolder}/bowling_game_test_gtest.exe",
             "args": [],
             "cwd": "${workspaceFolder}"
         },
@@ -30,7 +30,7 @@
             "MIMode": "lldb",
             "stopAtEntry": true,
             "name": "[cppdbg] Debug bowling_game_cli",
-            "program": "${workspaceFolder}/build/bowling_game_cli.exe",
+            "program": "${workspaceFolder}/bowling_game_cli.exe",
             "args": [],
             "cwd": "${workspaceFolder}"
         },
@@ -38,7 +38,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "[CodeLLDB] Debug bowling_game_test_assert",
-            "program": "${workspaceFolder}/build/bowling_game_test_assert.exe",
+            "program": "${workspaceFolder}/bowling_game_test_assert.exe",
             "args": [],
             "cwd": "${workspaceFolder}"
         },
@@ -46,7 +46,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "[CodeLLDB] Debug bowling_game_test_gtest",
-            "program": "${workspaceFolder}/build/bowling_game_test_gtest.exe",
+            "program": "${workspaceFolder}/bowling_game_test_gtest.exe",
             "args": [],
             "cwd": "${workspaceFolder}"
         },
@@ -54,7 +54,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "[CodeLLDB] Debug bowling_game_cli",
-            "program": "${workspaceFolder}/build/bowling_game_cli.exe",
+            "program": "${workspaceFolder}/bowling_game_cli.exe",
             "args": [],
             "cwd": "${workspaceFolder}"
         }
