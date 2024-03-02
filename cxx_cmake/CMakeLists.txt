@@ -200,31 +200,31 @@ endmacro()
 
 do_cli_test(
     all_ones
-    ${input_file_path_all_one_test}/all_ones.txt 
+    ${input_file_path_all_one_test}
     20
 )
 
 do_cli_test(
     all_zeros
-    ${input_file_path_all_zeros}/all_zeros.txt 
+    ${input_file_path_all_zeros}
     0
 )
 
 do_cli_test(
     one_spare
-    ${input_file_path_one_spare}/one_spare.txt
+    ${input_file_path_one_spare}
     16
 )
 
 do_cli_test(
     one_strike
-    ${input_file_path_one_strike}/one_strike.txt
+    ${input_file_path_one_strike}
     24
 )
 
 do_cli_test(
     perfect_game
-    ${input_file_path_perfect_game}/perfect_game.txt
+    ${input_file_path_perfect_game}
     300
 )
 
@@ -276,31 +276,31 @@ add_custom_command(
 
 do_cli_shared_test(
     all_ones
-    ${input_file_path_all_one_test}/all_ones.txt 
+    ${input_file_path_all_one_test}
     20
 )
 
 do_cli_shared_test(
     all_zeros
-    ${input_file_path_all_zeros}/all_zeros.txt 
+    ${input_file_path_all_zeros}
     0
 )
 
 do_cli_shared_test(
     one_spare
-    ${input_file_path_one_spare}/one_spare.txt
+    ${input_file_path_one_spare}
     16
 )
 
 do_cli_shared_test(
     one_strike
-    ${input_file_path_one_strike}/one_strike.txt
+    ${input_file_path_one_strike}
     24
 )
 
 do_cli_shared_test(
     perfect_game
-    ${input_file_path_perfect_game}/perfect_game.txt
+    ${input_file_path_perfect_game}
     300
 )
 
@@ -347,31 +347,31 @@ endmacro()
 
 do_cli_static_test(
     all_ones
-    ${input_file_path_all_one_test}/all_ones.txt 
+    ${input_file_path_all_one_test}
     20
 )
 
 do_cli_static_test(
     all_zeros
-    ${input_file_path_all_zeros}/all_zeros.txt 
+    ${input_file_path_all_zeros}
     0
 )
 
 do_cli_static_test(
     one_spare
-    ${input_file_path_one_spare}/one_spare.txt
+    ${input_file_path_one_spare}
     16
 )
 
 do_cli_static_test(
     one_strike
-    ${input_file_path_one_strike}/one_strike.txt
+    ${input_file_path_one_strike}
     24
 )
 
 do_cli_static_test(
     perfect_game
-    ${input_file_path_perfect_game}/perfect_game.txt
+    ${input_file_path_perfect_game}
     300
 )
 
