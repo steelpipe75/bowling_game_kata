@@ -2,11 +2,11 @@
 cd /D %~dp0
 
 echo ---- VVVV ---- build ---- VVVV ---- 
-ninja
+cmake --build . --config ${CMAKE_BUILD_TYPE}
 echo ---- AAAA ---- build ---- AAAA ---- 
 
 echo ---- VVVV ---- test ---- VVVV ---- 
-ctest
+ctest --build-config ${CMAKE_BUILD_TYPE}
 echo ---- AAAA ---- test ---- AAAA ---- 
 
 @POST_TEST_PROCESS@
