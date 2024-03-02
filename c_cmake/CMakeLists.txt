@@ -35,7 +35,12 @@ FetchContent_MakeAvailable(PCUnit)
 
 #################################################################################
 
-set(default_build_type "Coverage")
+# message(STATUS "CMAKE_C_COMPILER_ID is ${CMAKE_C_COMPILER_ID}")
+if(CMAKE_C_COMPILER_ID STREQUAL "Clang")
+    set(default_build_type "Coverage")
+else()
+    set(default_build_type "Debug")
+endif()
 if(NOT CMAKE_BUILD_TYPE)
     message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
     set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE
