@@ -44,10 +44,25 @@ if(NOT CMAKE_BUILD_TYPE)
         "Debug" "Release" "Coverage")
 endif()
 
-set(CMAKE_C_FLAGS "-Wall -Wextra")
-set(CMAKE_C_FLAGS_DEBUG "-g -O0")
-set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
-set(CMAKE_C_FLAGS_COVERAGE "-g -O0 -fprofile-instr-generate -fcoverage-mapping")
+option(SW_OPT_no_unused_parameter OFF "if \"ON\" add compile option \"-Wno-unused-parameter\"")
+
+macro(target_compile_options_helper ARG_TARGET_NAME)
+    target_compile_options(${ARG_TARGET_NAME}
+        PRIVATE $<$<C_COMPILER_ID:MSVC>:/W4 /WX- /utf-8>
+        PRIVATE $<$<C_COMPILER_ID:Clang>:-Wall -Wextra>
+        PRIVATE $<$<AND:$<C_COMPILER_ID:Clang>,$<CONFIG:Debug>>:-g -O0>
+        PRIVATE $<$<AND:$<C_COMPILER_ID:Clang>,$<CONFIG:Release>>:-O3 -DNDEBUG>
+        PRIVATE $<$<AND:$<C_COMPILER_ID:Clang>,$<CONFIG:Coverage>>:-g -O0 -fprofile-instr-generate -fcoverage-mapping>
+    )
+    if(${SW_OPT_no_unused_parameter})
+        target_compile_options(${ARG_TARGET_NAME}
+            PRIVATE $<$<AND:$<C_COMPILER_ID:Clang>>:-Wno-unused-parameter>
+        )
+    endif()
+    target_link_options(${ARG_TARGET_NAME}
+        PRIVATE $<$<AND:$<C_COMPILER_ID:Clang>,$<CONFIG:Coverage>>:-fprofile-instr-generate -fcoverage-mapping>
+    )
+endmacro()
 
 if(WIN32)
     if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
@@ -112,6 +127,16 @@ elseif(UNIX)
     )
 endif()
 
+target_include_directories(bowling_game_test_assert
+    PRIVATE lib/bowling_game/src
+)
+target_compile_options_helper(bowling_game_test_assert)
+
+add_custom_command(
+  TARGET bowling_game_test_assert POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_test_assert> ${CMAKE_BINARY_DIR}
+)
+
 #################################################################################
 
 add_executable(
@@ -121,9 +146,6 @@ add_executable(
 )
 
 target_link_libraries(bowling_game_test_pcunit PCUnit)
-
-target_include_directories(bowling_game_test_pcunit PUBLIC ${CMAKE_BINARY_DIR}/_deps/pcunit-src)
-
 
 if(WIN32)
     add_test(
@@ -136,6 +158,17 @@ elseif(UNIX)
         COMMAND sh ${TEST_LUNCHER} bowling_game_test_pcunit $<TARGET_FILE:bowling_game_test_pcunit>
     )
 endif()
+
+target_include_directories(bowling_game_test_pcunit
+    PRIVATE lib/bowling_game/src
+    PRIVATE ${CMAKE_BINARY_DIR}/_deps/pcunit-src
+)
+target_compile_options_helper(bowling_game_test_pcunit)
+
+add_custom_command(
+  TARGET bowling_game_test_pcunit POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_test_pcunit> ${CMAKE_BINARY_DIR}
+)
 
 #################################################################################
 
@@ -166,13 +199,13 @@ macro(do_cli_test testname inputfile output)
         add_test(
             NAME bowling_game_cli_test_${testname}
             COMMAND ${TEST_LUNCHER} bowling_game_cli_test_${testname} $<TARGET_FILE:bowling_game_cli> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
         )
     elseif(UNIX)
         add_test(
             NAME bowling_game_cli_test_${testname}
             COMMAND sh ${TEST_LUNCHER} bowling_game_cli_test_${testname} $<TARGET_FILE:bowling_game_cli> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
         )
     endif()
     set_tests_properties(
@@ -180,6 +213,16 @@ macro(do_cli_test testname inputfile output)
         PASS_REGULAR_EXPRESSION ${output}
     )
 endmacro()
+
+target_include_directories(bowling_game_cli
+    PRIVATE lib/bowling_game/src
+)
+target_compile_options_helper(bowling_game_cli)
+
+add_custom_command(
+  TARGET bowling_game_cli POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_cli> ${CMAKE_BINARY_DIR}
+)
 
 do_cli_test(
     all_ones
@@ -237,13 +280,13 @@ macro(do_cli_shared_test testname inputfile output)
         add_test(
             NAME bowling_game_cli_shared_test_${testname}
             COMMAND ${TEST_LUNCHER} bowling_game_cli_shared_test_${testname} $<TARGET_FILE:bowling_game_cli_shared> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
         )
     elseif(UNIX)
         add_test(
             NAME bowling_game_cli_shared_test_${testname}
             COMMAND sh ${TEST_LUNCHER} bowling_game_cli_shared_test_${testname} $<TARGET_FILE:bowling_game_cli_shared> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
         )
     endif()
     set_tests_properties(
@@ -252,9 +295,16 @@ macro(do_cli_shared_test testname inputfile output)
     )
 endmacro()
 
+target_include_directories(bowling_game_cli_shared
+    PRIVATE lib/bowling_game/src
+)
+target_compile_options_helper(bowling_game_cli_shared)
+
 add_custom_command(
   TARGET bowling_game_cli_shared POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_share> $<TARGET_FILE_DIR:bowling_game_cli_shared>
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_share> ${CMAKE_BINARY_DIR}
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_cli_shared> ${CMAKE_BINARY_DIR}
 )
 
 do_cli_shared_test(
@@ -313,13 +363,13 @@ macro(do_cli_static_test testname inputfile output)
         add_test(
             NAME bowling_game_cli_static_test_${testname}
             COMMAND ${TEST_LUNCHER} bowling_game_cli_static_test_${testname} $<TARGET_FILE:bowling_game_cli_static> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
         )
     elseif(UNIX)
         add_test(
             NAME bowling_game_cli_static_test_${testname}
             COMMAND sh ${TEST_LUNCHER} bowling_game_cli_static_test_${testname} $<TARGET_FILE:bowling_game_cli_static> ${inputfile}
-            WORKING_DIRECTORY ${CMAKE_BAINARY_DIR}
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
         )
     endif()
     set_tests_properties(
@@ -327,6 +377,16 @@ macro(do_cli_static_test testname inputfile output)
         PASS_REGULAR_EXPRESSION ${output}
     )
 endmacro()
+
+target_include_directories(bowling_game_cli_static
+    PRIVATE lib/bowling_game/src
+)
+target_compile_options_helper(bowling_game_cli_static)
+
+add_custom_command(
+  TARGET bowling_game_cli_static POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_cli_static> ${CMAKE_BINARY_DIR}
+)
 
 do_cli_static_test(
     all_ones
