@@ -48,6 +48,8 @@ endif()
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+include(GoogleTest)
+
 #################################################################################
 
 set(default_build_type "Debug")
@@ -140,15 +142,17 @@ target_link_libraries(bowling_game_test_gtest gtest_main)
 
 if(WIN32)
     add_test(
-        NAME bowling_game_test_gtest
+        NAME bowling_game_test_gtest_All
         COMMAND ${TEST_LUNCHER} bowling_game_test_gtest $<TARGET_FILE:bowling_game_test_gtest>
     )
 elseif(UNIX)
     add_test(
-        NAME bowling_game_test_gtest
+        NAME bowling_game_test_gtest_All
         COMMAND sh ${TEST_LUNCHER} bowling_game_test_gtest $<TARGET_FILE:bowling_game_test_gtest>
     )
 endif()
+
+gtest_discover_tests(bowling_game_test_gtest)
 
 #################################################################################
 
