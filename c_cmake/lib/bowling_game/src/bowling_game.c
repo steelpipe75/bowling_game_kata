@@ -27,7 +27,7 @@ static int nomal_score(struct bowling_game * game, int frame_index){
     return game->rolls[frame_index] + game->rolls[frame_index+1];
 }
 
-struct bowling_game * bowling_game_create(void){
+DLL_EXPORT struct bowling_game * bowling_game_create(void){
     struct bowling_game * game;
     int i;
 
@@ -40,15 +40,15 @@ struct bowling_game * bowling_game_create(void){
     return game;
 }
 
-void bowling_game_destroy(struct bowling_game * game){
+DLL_EXPORT void bowling_game_destroy(struct bowling_game * game){
     free(game);
 }
 
-void bowling_game_roll(struct bowling_game * game, int pins){
+DLL_EXPORT void bowling_game_roll(struct bowling_game * game, int pins){
     game->rolls[game->current_roll++] = pins;
 }
 
-int bowling_game_score(struct bowling_game * game){
+DLL_EXPORT int bowling_game_score(struct bowling_game * game){
     int score = 0;
     int frame_index;
     int frame;

@@ -309,7 +309,6 @@ target_compile_options_helper(bowling_game_cli_shared)
 
 add_custom_command(
   TARGET bowling_game_cli_shared POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_share> $<TARGET_FILE_DIR:bowling_game_cli_shared>
   COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_share> ${CMAKE_BINARY_DIR}
   COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_cli_shared> ${CMAKE_BINARY_DIR}
 )
