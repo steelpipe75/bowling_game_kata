@@ -81,4 +81,4 @@ jobs:
     - name: Coverage
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
       if : ${{ matrix.build_type == 'Coverage' }}
-      run: sh ./build_and_test.sh
+      run: sh ./coverage_post_test_process_common.sh
