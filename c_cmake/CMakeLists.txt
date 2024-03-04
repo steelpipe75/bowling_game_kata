@@ -1,5 +1,5 @@
 # 動作確認できたCMakeのバージョン
-cmake_minimum_required(VERSION 3.25.0)
+cmake_minimum_required(VERSION 3.22.1)
 
 # project情報
 project(bowling_game
