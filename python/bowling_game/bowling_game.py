@@ -33,4 +33,3 @@ class BowlingGame():
 
     def spare_bonus(self, frame_index: int) -> int:
         return self.rolls[frame_index + 2]
-

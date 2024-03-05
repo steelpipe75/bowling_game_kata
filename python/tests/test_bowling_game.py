@@ -5,6 +5,7 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from bowling_game import bowling_game as bg
 
+
 class TestBowlingGame(unittest.TestCase):
     def test_all_zeros(self):
         game = bg.BowlingGame()
