@@ -4,7 +4,7 @@ import bowling_game.bowling_game as bg
 if __name__ == '__main__':
     args = sys.argv
     if len(args) == 2:
-        f = open( args[1], 'r')
+        f = open(args[1], 'r')
         datalist = f.readlines()
         f.close()
         game = bg.BowlingGame()
