@@ -1,15 +1,15 @@
 llvm-profdata merge bowling_game_test_assert.profraw --output bowling_game_test_assert.profdata
 echo;
-llvm-cov show              -show-line-counts-or-regions --show-branches=count --show-expansions                                        -instr-profile bowling_game_test_assert.profdata bowling_game_test_assert
-llvm-cov show -format=html -show-line-counts-or-regions --show-branches=count --show-expansions -output-dir=cov_html/bowling_game_test_assert -instr-profile bowling_game_test_assert.profdata bowling_game_test_assert
+llvm-cov show              -show-line-counts-or-regions --show-regions=true --show-expansions                                        -instr-profile bowling_game_test_assert.profdata bowling_game_test_assert
+llvm-cov show -format=html -show-line-counts-or-regions --show-regions=true --show-expansions -output-dir=cov_html/bowling_game_test_assert -instr-profile bowling_game_test_assert.profdata bowling_game_test_assert
 echo;
 llvm-cov report -instr-profile bowling_game_test_assert.profdata bowling_game_test_assert
 llvm-cov report -instr-profile bowling_game_test_assert.profdata bowling_game_test_assert >coverage_report_bowling_game_test_assert.txt
 
 llvm-profdata merge bowling_game_cli_*.profraw --output bowling_game_cli.profdata
 echo;
-llvm-cov show              -show-line-counts-or-regions --show-branches=count --show-expansions                                       -instr-profile bowling_game_cli.profdata bowling_game_cli
-llvm-cov show -format=html -show-line-counts-or-regions --show-branches=count --show-expansions -output-dir=cov_html/bowling_game_cli -instr-profile bowling_game_cli.profdata bowling_game_cli
+llvm-cov show              -show-line-counts-or-regions --show-regions=true --show-expansions                                       -instr-profile bowling_game_cli.profdata bowling_game_cli
+llvm-cov show -format=html -show-line-counts-or-regions --show-regions=true --show-expansions -output-dir=cov_html/bowling_game_cli -instr-profile bowling_game_cli.profdata bowling_game_cli
 echo;
 llvm-cov report -instr-profile bowling_game_cli.profdata bowling_game_cli
 llvm-cov report -instr-profile bowling_game_cli.profdata bowling_game_cli >coverage_report_bowling_game_cli.txt
