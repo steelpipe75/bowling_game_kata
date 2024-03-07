@@ -80,5 +80,5 @@ jobs:
     
     - name: llvm-cov
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
-      if: matrix.build_type == "Coverage"
+      if: ${{ matrix.build_type == 'Coverage' }}
       run: sh ./coverage_post_test_process_common.sh
