@@ -5,7 +5,8 @@ author        = "Nishizaki"
 description   = "bowlingのスコア計算"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["nim"]
+binDir        = "bin"
+bin           = @["bowling_game"]
 
 
 # Dependencies
