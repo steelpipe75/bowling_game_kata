@@ -30,7 +30,7 @@ func TestAllones(t *testing.T) {
 	}
 }
 
-func testOnepare(t *testing.T) {
+func TestOnespare(t *testing.T) {
 	bg := BowlingGame{}
 
 	bg.Roll(5)
@@ -46,7 +46,7 @@ func testOnepare(t *testing.T) {
 	}
 }
 
-func testOnestrike(t *testing.T) {
+func TestOnestrike(t *testing.T) {
 	bg := BowlingGame{}
 
 	bg.Roll(10)
@@ -56,13 +56,13 @@ func testOnestrike(t *testing.T) {
 		bg.Roll(0)
 	}
 	got := bg.Score()
-	want := 17
+	want := 24
 	if got != want {
 		t.Errorf("got %d, want %d", got, want)
 	}
 }
 
-func testPerfectgame(t *testing.T) {
+func TestPerfectgame(t *testing.T) {
 	bg := BowlingGame{}
 
 	for i := 0; i < 12; i++ {
