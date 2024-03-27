@@ -3,15 +3,18 @@ package main
 import (
 	"bowling_game/bowling_game"
 	"fmt"
+	"os"
+	"strconv"
 )
 
 func main() {
 	bg := bowling_game.BowlingGame{}
 
-	for i := 0; i < 20; i++ {
-		bg.Roll(0)
+	for _, v := range os.Args {
+		pins, _ := strconv.Atoi(v)
+		bg.Roll(pins)
 	}
 
 	score := bg.Score()
-	fmt.Println("Total Score:", score)
+	fmt.Println(score)
 }
