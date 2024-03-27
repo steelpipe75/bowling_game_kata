@@ -9,9 +9,15 @@ func (bg *BowlingGame) Roll(pins int) {
 }
 
 func (bg BowlingGame) Score() int {
+	maxIndex := len(bg.rolls)
+	bg.Roll(0)
+	bg.Roll(0)
 	score := 0
 	frameIndex := 0
 	for frame := 0; frame < 10; frame++ {
+		if frameIndex >= maxIndex {
+			break
+		}
 		if bg.isStrike(frameIndex) {
 			score += bg.strikeScore(frameIndex)
 			frameIndex++
