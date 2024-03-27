@@ -11,7 +11,10 @@ func main() {
 	bg := bowling_game.BowlingGame{}
 
 	for _, v := range os.Args {
-		pins, _ := strconv.Atoi(v)
+		pins, err := strconv.Atoi(v)
+		if err != nil {
+			continue
+		}
 		bg.Roll(pins)
 	}
 
