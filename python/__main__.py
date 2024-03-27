@@ -9,11 +9,11 @@ if __name__ == '__main__':
         f.close()
         game = bg.BowlingGame()
         for data in datalist:
-            if int(data) > 0:
+            if int(data) >= 0:
                 # print(data, end='')
                 game.roll(int(data))
         print(game.score())
         sys.exit(0)
     else:
-        print('Usage: python ' + args[0] + '<inputfilename>')
+        print('Usage: python ' + args[0] + ' <inputfilename>')
         sys.exit(1)
