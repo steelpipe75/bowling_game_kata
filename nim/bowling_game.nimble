@@ -6,7 +6,7 @@ description   = "bowlingのスコア計算"
 license       = "MIT"
 srcDir        = "src"
 binDir        = "bin"
-bin           = @["bowling_game"]
+bin           = @["bowling_game_cli"]
 
 
 # Dependencies
