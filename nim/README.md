@@ -8,3 +8,8 @@ Nim で ボーリングのスコア計算
 nimble build
 ```
 
+## テスト実行
+
+```
+nimble test
+```
