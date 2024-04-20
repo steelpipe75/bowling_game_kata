@@ -23,8 +23,8 @@ jobs:
 
     - name: Build
       run: go build -v .
-      working-directory: ${{github.workspace}}/go/bowking_game
+      working-directory: ${{github.workspace}}/go/bowling_game
 
     - name: Test
-      run: go test -v ./bowking_game
-      working-directory: ${{github.workspace}}/go/bowking_game
+      run: go test -v ./bowling_game
+      working-directory: ${{github.workspace}}/go/bowling_game
