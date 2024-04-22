@@ -1,8 +1,38 @@
 module main
-import os
+import bowling_game
 
 fn main() {
-	println(os.args)
-	mut f := os.open(os.args[1]) or { panic(err) }
-	defer{ f.close() }
+	mut bg := bowling_game.new_bowling_game()
+
+	bg.roll(1)
+	bg.roll(1)
+
+	bg.roll(1)
+	bg.roll(1)
+
+	bg.roll(1)
+	bg.roll(1)
+
+	bg.roll(1)
+	bg.roll(1)
+
+	bg.roll(1)
+	bg.roll(1)
+
+	bg.roll(1)
+	bg.roll(1)
+
+	bg.roll(1)
+	bg.roll(1)
+
+	bg.roll(1)
+	bg.roll(1)
+
+	bg.roll(1)
+	bg.roll(1)
+
+	bg.roll(1)
+	bg.roll(1)
+
+	println(bg.score())
 }
