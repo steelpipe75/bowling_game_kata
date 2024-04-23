@@ -2,6 +2,10 @@ use std::env;
 use std::fs::File;
 use std::io::{self, BufRead};
 
+mod bowling_game;
+
+use bowling_game::BowlingGame;
+
 fn main() -> io::Result<()> {
     // コマンドライン引数からファイル名を取得
     let args: Vec<String> = env::args().collect();
@@ -15,7 +19,9 @@ fn main() -> io::Result<()> {
     let file = File::open(filename)?;
     let reader = io::BufReader::new(file);
 
-    // ファイルから一行ずつ読み込んで二倍にして出力する
+    let mut bg = BowlingGame::new();
+
+    // ファイルから一行ずつ読み込む
     for line in reader.lines() {
         let line = line?;
         let num: i32 = match line.trim().parse() {
@@ -25,8 +31,14 @@ fn main() -> io::Result<()> {
                 continue;
             }
         };
-        println!("{}", num * 2);
+        if num < 0 {
+            break
+        } else {
+            bg.roll(num)
+        }
     }
+
+    println!("{}", bg.score());
 
     Ok(())
 }
