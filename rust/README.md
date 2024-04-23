@@ -16,6 +16,11 @@ cd .\bowling_game
 cargo run
 ```
 
+```
+cd .\bowling_game
+cargo run ..\..\testdata\all_ones.txt
+```
+
 ## テスト実行
 
 ```
