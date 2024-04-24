@@ -2,6 +2,12 @@
 
 V言語 で ボーリングのスコア計算
 
+## 実行
 ```
-v run .\src\main.v
+v run .\src 
+```
+
+## テスト
+```
+v test .\src 
 ```
