@@ -11,7 +11,7 @@ python .
 ```
 
 ```
-python . ..\testdata\all_ones.txt   
+python . ..\testdata\all_ones.txt
 ```
 
 ## テスト実行
