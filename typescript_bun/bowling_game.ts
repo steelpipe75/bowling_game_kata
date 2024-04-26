@@ -14,7 +14,7 @@ export class BowlingGame {
     }
 
     private spareScore(frameIndex: number): number {
-        return 10 + this.rolls[frameIndex + 1]
+        return 10 + this.rolls[frameIndex + 2]
     }
 
     roll(pins: number): void {
