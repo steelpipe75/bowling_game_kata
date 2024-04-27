@@ -5,7 +5,7 @@ import { BowlingGame } from "./bowling_game";
 const filePath = process.argv[2];
 
 if (!filePath) {
-    console.error('Usage: node script.js <file-path>');
+    console.error('Usage: bun run index.ts <file-path>');
     process.exit(1);
 }
 

@@ -5,7 +5,7 @@ const BowlingGame = require('./bowling_game');
 const fileName = process.argv[2];
 
 if (!fileName) {
-  console.error("Usage: node program.js <file_name>");
+  console.error("Usage: bun run index.js <file_name>");
   process.exit(1); // 異常終了
 }
 
