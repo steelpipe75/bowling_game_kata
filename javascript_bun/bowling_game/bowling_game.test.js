@@ -15,33 +15,33 @@ describe("Bowling Game", () => {
   }
 
   test("All zeros game", () => {
-    rollMany(bg, 20, 0)
+    rollMany(bg, 20, 0);
     expect(bg.score()).toBe(0);
   });
 
   test("All one game", () => {
-    rollMany(bg, 20, 1)
+    rollMany(bg, 20, 1);
     expect(bg.score()).toBe(20);
   });
 
   test("One spare game", () => {
-    bg.roll(5)
-    bg.roll(5)
-    bg.roll(3)
-    rollMany(bg, 17, 0)
+    bg.roll(5);
+    bg.roll(5);
+    bg.roll(3);
+    rollMany(bg, 17, 0);
     expect(bg.score()).toBe(16);
   });
 
   test("One strike game", () => {
-    bg.roll(10)
-    bg.roll(3)
-    bg.roll(4)
-    rollMany(bg, 16, 0)
+    bg.roll(10);
+    bg.roll(3);
+    bg.roll(4);
+    rollMany(bg, 16, 0);
     expect(bg.score()).toBe(24);
   });
 
   test("Perfect game", () => {
-    rollMany(bg, 12, 10)
+    rollMany(bg, 12, 10);
     expect(bg.score()).toBe(300);
   });
 });
