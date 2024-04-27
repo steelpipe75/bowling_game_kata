@@ -1,5 +1,5 @@
-const fs = require('fs');
-const BowlingGame = require('./bowling_game');
+import * as fs from 'fs';
+import { BowlingGame } from "./bowling_game";
 
 // コマンドライン引数からファイル名を取得
 const fileName = process.argv[2];

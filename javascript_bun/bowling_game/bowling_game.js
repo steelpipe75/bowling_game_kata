@@ -1,4 +1,4 @@
-class BowlingGame {
+export class BowlingGame {
   constructor() {
     this.rolls = [];
   }
@@ -49,5 +49,3 @@ class BowlingGame {
     return 10 + this.rolls[frameIndex + 2];
   }
 }
-
-module.exports = BowlingGame;
