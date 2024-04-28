@@ -38,7 +38,7 @@ class BowlingGame
   end
 
   def spare?(frame_index)
-    @rolls[frame_index] == 10
+    @rolls[frame_index] + @rolls[frame_index + 1] == 10
   end
 
   def strike_score(frame_index)
