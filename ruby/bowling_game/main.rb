@@ -20,7 +20,6 @@ File.open(filename, "r") do |file|
       break
     end
 
-    # 二倍して出力
     bg.roll(num)
   end
 end
