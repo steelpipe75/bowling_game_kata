@@ -48,7 +48,7 @@ end
 
 -- スペアのボーナス
 function BowlingGame:spareScore(rollIndex)
-    return self.rolls[rollIndex + 2]
+    return 10 + self.rolls[rollIndex + 2]
 end
 
 -- ストライクかどうかの判定
