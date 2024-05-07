@@ -1,4 +1,4 @@
-# bowling_game_kata : V言語
+# bowling_game_kata : v
 
 V言語 で ボーリングのスコア計算
 

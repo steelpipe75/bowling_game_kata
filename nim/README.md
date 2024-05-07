@@ -1,4 +1,4 @@
-# bowling_game_kata : Nim
+# bowling_game_kata : nim
 
 Nim で ボーリングのスコア計算
 

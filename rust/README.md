@@ -1,4 +1,4 @@
-# bowling_game_kata : Rust
+# bowling_game_kata : rust
 
 Rust で ボーリングのスコア計算
 

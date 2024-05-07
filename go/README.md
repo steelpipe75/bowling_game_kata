@@ -1,4 +1,4 @@
-# bowling_game_kata : Go
+# bowling_game_kata : go
 
 Go で ボーリングのスコア計算
 
