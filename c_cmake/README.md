@@ -2,12 +2,20 @@
 
 C言語 + CMake で ボーリングのスコア計算
 
+## cmakeを使ったビルド/ctestによるテスト
+```
+cmake -S . -B build
+cd build
+cmake --build .
+ctest
+```
+
 ## CI
 
 [![CMake on multiple platforms c_cmake](https://github.com/steelpipe75/bowling_game_kata/actions/workflows/cmake-multi-platform_c_make.yml/badge.svg)](https://github.com/steelpipe75/bowling_game_kata/actions/workflows/cmake-multi-platform_c_make.yml)
 [![CodeQL c_cmake](https://github.com/steelpipe75/bowling_game_kata/actions/workflows/codeql_c_cmake.yml/badge.svg)](https://github.com/steelpipe75/bowling_game_kata/actions/workflows/codeql_c_cmake.yml)
 
-## ビルド方法の例
+## その他 : ビルドツール/コンパイラを指定してビルドする例
 
 ### ninja
 ```
