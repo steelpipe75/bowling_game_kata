@@ -28,3 +28,4 @@ https://kata-log.rocks/bowling-game-kata
 
 [ruby](./ruby/README.md) : Ruby
 
+[java](./java/README.md) : Java(javac/java直接呼び出し)
