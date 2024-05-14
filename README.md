@@ -29,3 +29,14 @@ https://kata-log.rocks/bowling-game-kata
 [ruby](./ruby/README.md) : Ruby
 
 [java](./java/README.md) : Java(javac/java直接呼び出し)
+
+---
+
+**WIP : 作業中**
+
+[v](./v/README.md) : V言語
+
+[zig](./zig/) : Zig
+
+[csharp_cmake](./csharp_cmake/) : C# + CMake
+
