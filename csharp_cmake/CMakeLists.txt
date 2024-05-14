@@ -17,7 +17,7 @@ endif()
 add_executable(
     bowling_game_cli
 
-    BowlingGameCli.cs
-    BowlingGame.cs
+    src/BowlingGameCli.cs
+    src/BowlingGame.cs
 )
 
