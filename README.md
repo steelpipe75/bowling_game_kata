@@ -30,6 +30,8 @@ https://kata-log.rocks/bowling-game-kata
 
 [java](./java/README.md) : Java(javac/java直接呼び出し)
 
+[csharp_cmake](./csharp_cmake/README.md) : C# + CMake
+
 ---
 
 **WIP : 作業中**
@@ -37,6 +39,4 @@ https://kata-log.rocks/bowling-game-kata
 [v](./v/README.md) : V言語
 
 [zig](./zig/) : Zig
-
-[csharp_cmake](./csharp_cmake/) : C# + CMake
 
