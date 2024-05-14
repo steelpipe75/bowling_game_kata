@@ -40,3 +40,5 @@ https://kata-log.rocks/bowling-game-kata
 
 [zig](./zig/) : Zig
 
+[java_maven](./java_maven/) : Java(Maven)
+
