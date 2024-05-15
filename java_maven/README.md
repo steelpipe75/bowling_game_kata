@@ -16,3 +16,9 @@ cd .\BowlingGameKata\
 mvn package
 ```
 
+## テスト実行
+
+```
+cd .\BowlingGameKata\
+mvn test
+```
