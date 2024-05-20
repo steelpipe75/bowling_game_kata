@@ -1,6 +1,6 @@
 # bowling_game_kata : csharp_dotnet
 
-C# + dotnetコマンド で ボーリングのスコア計算
+C# + .NET CLI(dotnetコマンド) で ボーリングのスコア計算
 
 ----
 

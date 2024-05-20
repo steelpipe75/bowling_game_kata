@@ -34,6 +34,8 @@ https://kata-log.rocks/bowling-game-kata
 
 [csharp_cmake](./csharp_cmake/README.md) : C# + CMake
 
+[csharp_dotnet](./csharp_dotnet/README.md) : C# + .NET CLI
+
 ---
 
 **WIP : 作業中**
