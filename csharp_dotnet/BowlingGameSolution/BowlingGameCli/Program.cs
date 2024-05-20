@@ -26,7 +26,7 @@ class Program
         try{
             // ファイルを1行ずつ読み込み、各行の整数値を2倍して出力
             using(StreamReader sr = new StreamReader(filePath)){
-                string line;
+                string? line;
                 while((line = sr.ReadLine()) != null)
                 {
                     if(int.TryParse(line, out int number)){
