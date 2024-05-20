@@ -51,7 +51,7 @@ namespace BowlingGameNamespace
         }
 
         private int SpareScpre(int frameIndex){
-            return 10 + rolls[frameIndex];
+            return 10 + rolls[frameIndex+2];
         }
     }
 }
