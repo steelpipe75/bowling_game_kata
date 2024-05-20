@@ -6,35 +6,35 @@ https://kata-log.rocks/bowling-game-kata
 
 ---
 
-[c_cmake](./c_cmake/README.md)  : C言語 + CMake
+[c_cmake](./c_cmake/README.md)  : C言語 + CMake \<PCUnit\>
 
-[cxx_cmake](./cxx_cmake/README.md) : C++ + CMake
+[cxx_cmake](./cxx_cmake/README.md) : C++ + CMake \<Google Test\>
 
-[go](./go/README.md) : Go言語
+[go](./go/README.md) : Go言語 \<testing\>
 
-[rust](./rust/README.md) : Rust
+[rust](./rust/README.md) : Rust \<cargo testコマンド\>
 
-[javascript_bun](./javascript_bun/README.md) : JavaScript(bun)
+[javascript_bun](./javascript_bun/README.md) : JavaScript(bun) \<module "bun:test"\>
 
-[typescript_bun](./typescript_bun/README.md) : TypeScript(bun)
+[typescript_bun](./typescript_bun/README.md) : TypeScript(bun) \<module "bun:test"\>
 
-[lua](./lua/README.md) : Lua
+[lua](./lua/README.md) : Lua \<LuaUnit\>
 
-[nim](./nim/README.md) : Nim
+[nim](./nim/README.md) : Nim \<std/unittest\>
 
-[php](./php/README.md) : PHP
+[php](./php/README.md) : PHP \<PHPUnit\>
 
-[python](./python/README.md) : Python
+[python](./python/README.md) : Python \<unittest\>
 
-[ruby](./ruby/README.md) : Ruby
+[ruby](./ruby/README.md) : Ruby \<Minitest\>
 
-[java](./java/README.md) : Java(javac/java直接呼び出し)
+[java](./java/README.md) : Java(javac/java直接呼び出し) \<テストなし\>
 
-[java_maven](./java_maven/README.md) : Java(Maven)
+[java_maven](./java_maven/README.md) : Java(Maven) \<JUnit\>
 
-[csharp_cmake](./csharp_cmake/README.md) : C# + CMake
+[csharp_cmake](./csharp_cmake/README.md) : C# + CMake \<テストなし\>
 
-[csharp_dotnet](./csharp_dotnet/README.md) : C# + .NET CLI
+[csharp_dotnet](./csharp_dotnet/README.md) : C# + .NET CLI \<xUnit\>
 
 ---
 
