@@ -39,3 +39,19 @@ dotnet add BowlingGameCli/BowlingGameCli.csproj reference BowlingGameLib/Bowling
 ```
 
 ----
+
+## ビルド
+```
+dotnet build
+```
+
+## テスト
+```
+dotnet test
+```
+
+## 実行
+```
+dotnet run --project .\BowlingGameCli\BowlingGameCli.csproj
+```
+
