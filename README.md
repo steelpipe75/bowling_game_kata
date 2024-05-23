@@ -1,10 +1,11 @@
 # bowling_game_kata
 
-新しいプログラミング言語を覚えるとき / 新しいツールの使い方を覚えるとき の練習で  
-https://kata-log.rocks/bowling-game-kata  
-を解いたときの記録を残しておく  
+新しいプログラミング言語を覚えるとき / 新しいツールの使い方を覚えるとき の練習(hands-on)  
+[https://kata-log.rocks/bowling-game-kata](https://kata-log.rocks/bowling-game-kata) を解いたときの記録を残しておく
 
 ---
+
+## 成果物
 
 [c_cmake](./c_cmake/README.md)  : C言語 + CMake \<PCUnit\>
 
@@ -36,11 +37,10 @@ https://kata-log.rocks/bowling-game-kata
 
 [csharp_dotnet](./csharp_dotnet/README.md) : C# + .NET CLI \<xUnit\>
 
+[v](./v/README.md) : V言語 \<v test\>
+
 ---
 
-**WIP : 作業中**
-
-[v](./v/README.md) : V言語
+## WIP : 作業中
 
 [zig](./zig/) : Zig
-
