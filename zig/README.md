@@ -1,6 +1,6 @@
 # bowling_game_kata : zig
 
-zig で ボーリングのスコア計算
+Zig で ボーリングのスコア計算
 
 ## ビルド
 ```
