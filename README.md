@@ -37,7 +37,7 @@
 
 [csharp_dotnet](./csharp_dotnet/README.md) : C# + .NET CLI \<xUnit\>
 
-[v](./v/README.md) : V言語 \<v test\>
+[v](./v/README.md) : V言語 \<v testコマンド\>
 
 ---
 
