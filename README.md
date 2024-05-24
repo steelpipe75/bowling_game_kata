@@ -45,3 +45,26 @@
 
 ## WIP : 作業中
 
+---
+
+## 試してみたいこと
+
+### プログラミング言語
+
+Perl
+
+Squirrel
+
+julia
+
+Dart
+
+Groovy
+
+### ビルドシステム
+
+Meson
+
+### その他
+
+組み込みスクリプティング　CとLua　C#とRoslyn
