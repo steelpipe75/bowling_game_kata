@@ -25,12 +25,12 @@ pub fn main() !void {
 
     var buf: [1024]u8 = undefined;
     while (try in_stream.readUntilDelimiterOrEof(&buf, '\n')) |line| {
-        std.debug.print("line {s}\n", .{line});
+        // std.debug.print("line {s}\n", .{line});
         const result = try std.fmt.parseInt(i32, line, 10);
         if (result < 0) {
             break;
         }
-        std.debug.print("roll {any}\n", .{result});
+        // std.debug.print("roll {any}\n", .{result});
         bg.roll(@as(u8, @intCast(result)));
     }
 
