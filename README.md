@@ -39,8 +39,9 @@
 
 [v](./v/README.md) : V言語 \<v testコマンド\>
 
+[zig](./zig/) : Zig \<zig testコマンド\>
+
 ---
 
 ## WIP : 作業中
 
-[zig](./zig/) : Zig
