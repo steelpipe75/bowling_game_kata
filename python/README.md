@@ -6,17 +6,16 @@ Python で ボーリングのスコア計算
 
 ## 実行方法
 
-```
+``` powershell
 python .
 ```
 
-```
+``` powershell
 python . ..\testdata\all_ones.txt
 ```
 
 ## テスト実行
 
-```
+``` powershell
 python -m unittest discover .\tests\
 ```
-
