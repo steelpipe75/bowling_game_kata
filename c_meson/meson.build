@@ -1,8 +1,12 @@
-project('c_meson', 'c',
+project('bowling_game', 'c',
   version : '0.1',
   default_options : ['warning_level=3'])
 
-exe = executable('c_meson', 'c_meson.c',
-  install : true)
+src = [
+    './src/bowling_game_cli.c',
+    './lib/bowling_game/src/bowling_game.c',
+]
 
-test('basic', exe)
+incdir = include_directories('./lib/bowling_game/src/')
+
+exe = executable('bowling_game', src, include_directories : incdir)
