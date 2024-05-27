@@ -37,6 +37,12 @@ add_library(
     src/bowling_game.c
 )
 
+target_include_directories(
+    bowling_game_share
+    PUBLIC 
+    src
+)
+
 #################################################################################
 
 add_library(
@@ -45,4 +51,8 @@ add_library(
     src/bowling_game.c
 )
 
-#################################################################################
+target_include_directories(
+    bowling_game_static
+    PUBLIC 
+    src
+)
