@@ -76,30 +76,21 @@ add_subdirectory(lib/bowling_game)
 #################################################################################
 
 add_executable(
-    bowling_game_test_pcunit
-    lib/bowling_game/src/bowling_game.c
-    lib/bowling_game/test/pcunit/bowling_game_test_pcunit.c
+    bowling_game_test
+    lib/bowling_game/test/bowling_game_test.c
 )
 
-target_link_libraries(bowling_game_test_pcunit PCUnit)
+target_link_libraries(bowling_game_test PCUnit bowling_game_static)
 
-if(WIN32)
-    add_test(
-        NAME bowling_game_test_pcunit
-        COMMAND ${TEST_LUNCHER} bowling_game_test_pcunit $<TARGET_FILE:bowling_game_test_pcunit>
-    )
-elseif(UNIX)
-    add_test(
-        NAME bowling_game_test_pcunit
-        COMMAND sh ${TEST_LUNCHER} bowling_game_test_pcunit $<TARGET_FILE:bowling_game_test_pcunit>
-    )
-endif()
+add_test(
+    NAME bowling_game_test
+    COMMAND $<TARGET_FILE:bowling_game_test>
+)
 
-target_include_directories(bowling_game_test_pcunit
-    PRIVATE lib/bowling_game/src
+target_include_directories(bowling_game_test
     PRIVATE ${CMAKE_BINARY_DIR}/_deps/pcunit-src
 )
-target_compile_options_helper(bowling_game_test_pcunit)
+target_compile_options_helper(bowling_game_test)
 
 #################################################################################
 
