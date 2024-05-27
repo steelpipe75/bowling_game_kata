@@ -62,7 +62,7 @@ jobs:
         # queries: security-extended,security-and-quality
 
     - name: Configure CMake (C++)
-      run: cmake -B ${{github.workspace}}/cxx_cmake/build -S ${{github.workspace}}/cxx_cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      run: cmake -B ${{github.workspace}}/cxx_cmake/build -S ${{github.workspace}}/cxx_cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
 
     - name: Build (C++)
       run: cmake --build ${{github.workspace}}/cxx_cmake/build
