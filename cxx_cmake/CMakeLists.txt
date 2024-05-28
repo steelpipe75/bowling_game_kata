@@ -27,22 +27,12 @@ if (CMAKE_VERSION VERSION_GREATER "3.24.0")
     cmake_policy(SET CMP0135 NEW)
 endif()
 
-if("$ENV{GOOGLETEST_PATH}" STREQUAL "")
-    set(gtest_url https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip)
-    message(NOTICE "googletest download ${gtest_url}")
-    FetchContent_Declare(
-        googletest
-        URL ${gtest_url}
-    )
-else()
-    file(TO_CMAKE_PATH $ENV{GOOGLETEST_PATH} GOOGLETEST_CMAKE_PATH)
-
-    message(NOTICE "googletest using file://${GOOGLETEST_CMAKE_PATH}")
-    FetchContent_Declare(
-        googletest
-        URL file://${GOOGLETEST_CMAKE_PATH}
-    )
-endif()
+set(gtest_url https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip)
+message(NOTICE "googletest download ${gtest_url}")
+FetchContent_Declare(
+    googletest
+    URL ${gtest_url}
+)
 
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
@@ -94,33 +84,10 @@ add_subdirectory(lib/bowling_game)
 
 add_executable(
     bowling_game_test_gtest
-    lib/bowling_game/src/bowling_game.cpp
     lib/bowling_game/test/gtest/bowling_game_test_gtest.cpp
 )
-
-target_link_libraries(bowling_game_test_gtest gtest_main)
-
-if(WIN32)
-    add_test(
-        NAME bowling_game_test_gtest_All
-        COMMAND ${TEST_LUNCHER} bowling_game_test_gtest $<TARGET_FILE:bowling_game_test_gtest>
-    )
-elseif(UNIX)
-    add_test(
-        NAME bowling_game_test_gtest_All
-        COMMAND sh ${TEST_LUNCHER} bowling_game_test_gtest $<TARGET_FILE:bowling_game_test_gtest>
-    )
-endif()
-
-target_include_directories(bowling_game_test_gtest
-    PRIVATE lib/bowling_game/src
-)
+target_link_libraries(bowling_game_test_gtest gtest_main bowling_game_static)
 target_compile_options_helper(bowling_game_test_gtest)
-
-add_custom_command(
-  TARGET bowling_game_test_gtest POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:bowling_game_test_gtest> ${CMAKE_BINARY_DIR}
-)
 
 gtest_discover_tests(bowling_game_test_gtest)
 
@@ -128,11 +95,7 @@ gtest_discover_tests(bowling_game_test_gtest)
 
 add_executable(
     bowling_game_cli
-    lib/bowling_game/src/bowling_game.cpp
     src/bowling_game_cli.cpp
 )
-
-target_include_directories(bowling_game_cli
-    PRIVATE lib/bowling_game/src
-)
+target_link_libraries(bowling_game_cli bowling_game_static)
 target_compile_options_helper(bowling_game_cli)
