@@ -29,7 +29,7 @@ endif()
 
 FetchContent_Declare(
     PCUnit
-    URL https://github.com/steelpipe75/PCUnit/archive/4ad20e36ae9df8739ed8e1cf3f4f1fa593f6d8db.zip
+    URL https://github.com/steelpipe75/PCUnit/archive/da3364e1ec4b16a7659d2ed63900707922f7479e.zip
 )
 FetchContent_MakeAvailable(PCUnit)
 
@@ -81,10 +81,6 @@ add_executable(
 )
 target_link_libraries(bowling_game_test PCUnit bowling_game_static)
 target_compile_options_helper(bowling_game_test)
-
-target_include_directories(bowling_game_test
-    PRIVATE ${CMAKE_BINARY_DIR}/_deps/pcunit-src
-)
 
 add_test(
     NAME bowling_game_test
