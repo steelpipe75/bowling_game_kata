@@ -79,18 +79,17 @@ add_executable(
     bowling_game_test
     lib/bowling_game/test/bowling_game_test.c
 )
-
 target_link_libraries(bowling_game_test PCUnit bowling_game_static)
+target_compile_options_helper(bowling_game_test)
+
+target_include_directories(bowling_game_test
+    PRIVATE ${CMAKE_BINARY_DIR}/_deps/pcunit-src
+)
 
 add_test(
     NAME bowling_game_test
     COMMAND $<TARGET_FILE:bowling_game_test>
 )
-
-target_include_directories(bowling_game_test
-    PRIVATE ${CMAKE_BINARY_DIR}/_deps/pcunit-src
-)
-target_compile_options_helper(bowling_game_test)
 
 #################################################################################
 
@@ -98,5 +97,5 @@ add_executable(
     bowling_game_cli
     src/bowling_game_cli.c
 )
-
 target_link_libraries(bowling_game_cli bowling_game_static)
+target_compile_options_helper(bowling_game_cli)
