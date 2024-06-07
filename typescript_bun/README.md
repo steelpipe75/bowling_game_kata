@@ -15,3 +15,10 @@ bun run . ..\..\testdata\all_ones.txt
 cd .\bowling_game\
 bun test
 ```
+
+## web debuggerをつかったデバッグ
+
+```
+cd .\bowling_game\
+bun --inspect-brk .\index.ts
+```
