@@ -1,6 +1,4 @@
-*/build
 temp
 .vscode
 *.bak
 **/__pycache__/**
-
