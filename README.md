@@ -9,6 +9,8 @@
 
 [c_cmake](./c_cmake/README.md)  : C言語 + CMake \<PCUnit\>
 
+[c_meson](./c_meson/README.md)  : C言語 + Meson \<テストなし\>
+
 [cxx_cmake](./cxx_cmake/README.md) : C++ + CMake \<Google Test\>
 
 [go](./go/README.md) : Go言語 \<testing\>
@@ -60,10 +62,6 @@ julia
 Dart
 
 Groovy
-
-### ビルドシステム
-
-Meson
 
 ### その他
 
