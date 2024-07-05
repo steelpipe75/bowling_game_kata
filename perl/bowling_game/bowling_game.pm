@@ -56,4 +56,9 @@ sub sum_of_balls_in_frame {
     return $rolls[$frame_index] + $rolls[$frame_index + 1];
 }
 
+sub reset_game {
+    @rolls = ();
+    $current_roll = 0;
+}
+
 1;

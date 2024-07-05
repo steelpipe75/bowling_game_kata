@@ -10,6 +10,7 @@ die "Usage: $0 <file>\n" unless defined $file;
 
 open my $fh, '<', $file or die "Could not open file '$file': $!\n";
 
+bowling_game::reset_game();
 while (my $line = <$fh>) {
     chomp $line;
     last if $line < 0; # 負の数が出たら終了
