@@ -1,4 +1,4 @@
-package bowling;
+package bowling_game;
 
 use strict;
 use warnings;

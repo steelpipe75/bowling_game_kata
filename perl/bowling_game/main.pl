@@ -13,10 +13,10 @@ open my $fh, '<', $file or die "Could not open file '$file': $!\n";
 while (my $line = <$fh>) {
     chomp $line;
     last if $line < 0; # 負の数が出たら終了
-    bowling::roll($line);
+    bowling_game::roll($line);
 }
 
 close $fh;
 
-my $score = bowling::score();
+my $score = bowling_game::score();
 print "$score\n";
