@@ -25,6 +25,8 @@
 
 [nim](./nim/README.md) : Nim \<std/unittest\>
 
+[perl](./perl/README.md) : Perl \<Test::More\>
+
 [php](./php/README.md) : PHP \<PHPUnit\>
 
 [python](./python/README.md) : Python \<unittest\>
@@ -52,8 +54,6 @@
 ## 試してみたいこと
 
 ### プログラミング言語
-
-Perl
 
 Squirrel
 
